@@ -1,24 +1,13 @@
-# Snippet Saver Chrome Extension (React, TypeScript, Webpack)
+# LockIn Chrome Extension (React, TypeScript, Webpack)
 
 This project demonstrates how to build a Chrome extension using [React](https://react.dev/) with TypeScript and Webpack. It showcases key features such as interacting with Chrome APIs ([storage](https://developer.chrome.com/docs/extensions/reference/api/storage), [contextMenus](https://developer.chrome.com/docs/extensions/reference/api/contextMenus)), testing with [Jest](https://jestjs.io/) and [Sinon](https://sinonjs.org/), and structuring a React app with separation of concerns.
 
 ## Features
 
-- Capture snippets of text from web pages using a [**context menu**](https://developer.chrome.com/docs/extensions/reference/api/contextMenus)
-- View, edit, and delete saved snippets in a [**popup window**](https://developer.chrome.com/docs/extensions/reference/api/action#show_a_popup) triggered by an [**action button**](https://developer.chrome.com/docs/extensions/reference/api/action)
-- Persist snippets using [Chrome's storage API](https://developer.chrome.com/docs/extensions/reference/api/storage)
-- Interact with the extension using content scripts and background scripts
-- Comprehensive testing setup using [Jest](https://jestjs.io/), [Sinon](https://sinonjs.org/), and [sinon-chrome](https://github.com/acvetkov/sinon-chrome/) for mocking Chrome API
+- Dynamic block list
+- Timed/Untimed blocking
 
 ## Screenshots
-
-The first screenshot showcases the **popup window** with saved snippets and the **action button** (SC in the top-right corner):
-
-![Screenshot showcases the **popup window** with saved snippets and the **action button** (SC in the top-right corner)](./screenshot-action-button-and-popup.png)
-
-The second screenshot shows the **context menu** that appears when you right-click on a web page to capture a snippet (this context menu is registered and its events are handled in the `background.js` script):
-
-![Screenshot of the context menu](./screenshot-context-menu.png)
 
 ## Installation
 
@@ -35,20 +24,20 @@ The second screenshot shows the **context menu** that appears when you right-cli
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/jlumbroso/chrome-extension-text-collector
+   git clone https://github.com/ezou626/lockin-chrome-extension-demo
    ```
 
 2. Install dependencies:
 
    ```bash
-   cd chrome-extension-text-collector
-   npm install
+   cd lockin-chrome-extension-demo
+   yarn install
    ```
 
 3. Build the extension:
 
    ```bash
-   npm run build
+   yarn run build
    ```
 
 4. Load the extension in Chrome:
@@ -68,7 +57,7 @@ The second screenshot shows the **context menu** that appears when you right-cli
 - Run the development server with hot reloading:
 
   ```bash
-  npm run watch
+  yarn run watch
   ```
 
 - Load the unpacked extension in Chrome from the `dist` directory
@@ -115,13 +104,13 @@ The project includes a comprehensive testing setup using Jest, Sinon, and sinon-
 To run the tests:
 
 ```bash
-npm run test
+yarn run test
 ```
 
 To generate a coverage report:
 
 ```bash
-npm run coverage
+yarn run coverage
 ```
 
 ### Mocking Chrome APIs
