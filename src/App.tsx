@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import './App.css';
 import { Snippet, SnippetList } from './components/SnippetList';
 
 // Define a sample snippet for initial state when local storage is empty
