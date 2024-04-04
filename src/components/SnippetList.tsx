@@ -1,7 +1,7 @@
 import React from 'react';
-import { Snippet, SnippetItem } from './SnippetItem';
+import { Snippet, SnippetItem } from './LinkItem';
 
-export type { Snippet } from './SnippetItem';
+export type { Snippet } from './LinkItem';
 
 export interface SnippetListProps {
   snippets: Snippet[];

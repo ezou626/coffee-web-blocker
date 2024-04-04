@@ -1,13 +1,18 @@
 # LockIn Chrome Extension (React, TypeScript, Webpack)
 
-This project demonstrates how to build a Chrome extension using [React](https://react.dev/) with TypeScript and Webpack. It showcases key features such as interacting with Chrome APIs ([storage](https://developer.chrome.com/docs/extensions/reference/api/storage), [contextMenus](https://developer.chrome.com/docs/extensions/reference/api/contextMenus)), testing with [Jest](https://jestjs.io/) and [Sinon](https://sinonjs.org/), and structuring a React app with separation of concerns.
-
 ## Features
 
 - Dynamic block list
 - Timed/Untimed blocking
 
-## Screenshots
+## Implementation Details
+
+### Storage
+
+
+### Monitoring
+background.js to register actions taken when a new tab is opened
+- read link and evaluate if should be blocked
 
 ## Installation
 
@@ -136,25 +141,8 @@ it('sets initial state with empty array when snippets key is an empty array in l
 
 In this test, we mock the `chrome.storage.local.get` method to return an empty array for the 'snippets' key. This allows us to test how the `App` component behaves when there are no saved snippets.
 
-## Duplicating Project: Using This Project As A Starting Point
-
-You are welcome to use this repository as a starting point for your own work. The best way to do so is to import the repository into your own GitHub account: You can do so either [using the GitHub Importer (recommended)](https://docs.github.com/en/migrations/importing-source-code/using-github-importer/importing-a-repository-with-github-importer) or [manually using the command-line](https://docs.github.com/en/repositories/creating-and-managing-repositories/duplicating-a-repository).
-
-## Ideas for Enhancements
-
-Here are a few ideas to enhance the functionality of this Chrome extension:
-
-- Support rich formatting
-- Implement syntax highlighting when selecting code
-- Make it easy to copy a snippet to clipboard
-- Add tags or categories to snippets for better organization
-- Implement search functionality to filter snippets
-- Allow users to export and import snippets as JSON files
-- Integrate with a note-taking service or a cloud storage provider
-- Add a feature to share snippets with others
-
 ## Credits
 
 The initial setup of this project was based on the tutorial by [Harshita Joshi](https://github.com/Harshita-mindfire) on creating a Chrome extension with React and TypeScript. The corresponding Medium article can be found [here](https://medium.com/@tharshita13/creating-a-chrome-extension-with-react-a-step-by-step-guide-47fe9bab24a1).
 
-The project has been extended with additional functionality, testing setup, and documentation. The most difficult part was figuring out the right combination of packages for the testing suite (for instance, I would avoid `jest-chrome`, `mockzilla`, `mockzilla-webextension`, to name but a few).
+The project has been extended with additional functionality, testing setup, and documentation by Professor Lumbroso. The most difficult part was figuring out the right combination of packages for the testing suite (for instance, I would avoid `jest-chrome`, `mockzilla`, `mockzilla-webextension`, to name but a few).
