@@ -1,56 +1,56 @@
 import React, { useState, useEffect } from 'react';
-import { Snippet, SnippetList } from './components/SnippetList';
+import { Link, BlockList } from './components/BlockList';
 
-// Define a sample snippet for initial state when local storage is empty
-const sample_snippet: Snippet = { id: 1, text: 'Sample snippet' };
+// Define a sample link for initial state when local storage is empty
+const sample_link: Link = { id: 1, url: 'Sample snippet' };
 
 function App() {
-  // Define the state variable for storing the list of snippets
-  const [snippets, setSnippets] = useState<Snippet[]>([]);
+  // Define the state variable for storing the list of links
+  const [links, setLinks] = useState<Link[]>([]);
 
   // Use useEffect to load snippets from local storage when the component mounts
   useEffect(() => {
-    chrome.storage.local.get('snippets', (result) => {
-      if (result.snippets === undefined) {
-        // If 'snippets' key doesn't exist in local storage, set the initial state with the sample snippet
-        setSnippets([sample_snippet]);
+    chrome.storage.local.get('links', (result) => {
+      if (result.links === undefined) {
+        // If 'links' key doesn't exist in local storage, set the initial state with the sample snippet
+        setLinks([sample_link]);
       } else {
-        // If 'snippets' key exists in local storage, set the state with the stored snippets
-        setSnippets(result.snippets);
+        // If 'links' key exists in local storage, set the state with the stored snippets
+        setLinks(result.links);
       }
     });
   }, []);
 
   // Handler for editing a snippet
-  const handleEditSnippet = (id: number, newText: string) => {
+  const handleEditLink = (id: number, newText: string) => {
     // Create a new array with the updated snippet
-    const updatedSnippets = snippets.map((snippet) =>
-      snippet.id === id ? { ...snippet, text: newText } : snippet
+    const updatedLinks = links.map((link) =>
+      link.id === id ? { ...link, text: newText } : link
     );
     // Update the state with the new array
-    setSnippets(updatedSnippets);
+    setLinks(updatedLinks);
     // Save the updated snippets to local storage
-    chrome.storage.local.set({ snippets: updatedSnippets });
+    chrome.storage.local.set({ link: updatedLinks });
   };
 
   // Handler for deleting a snippet
-  const handleDeleteSnippet = (id: number) => {
+  const handleDeleteLink = (id: number) => {
     // Create a new array without the deleted snippet
-    const updatedSnippets = snippets.filter((snippet) => snippet.id !== id);
+    const updatedLinks = links.filter((link) => link.id !== id);
     // Update the state with the new array
-    setSnippets(updatedSnippets);
+    setLinks(updatedLinks);
     // Save the updated snippets to local storage
-    chrome.storage.local.set({ snippets: updatedSnippets });
+    chrome.storage.local.set({ links: updatedLinks });
   };
 
   return (
     <div>
       <h1 className="text-xl">Snippet Collector</h1>
       {/* Render the SnippetList component with the snippets and event handlers */}
-      <SnippetList
-        snippets={snippets}
-        onEditSnippet={handleEditSnippet}
-        onDeleteSnippet={handleDeleteSnippet}
+      <BlockList
+        links={links}
+        onEditLink={handleEditLink}
+        onDeleteLink={handleDeleteLink}
       />
     </div>
   );

@@ -1,19 +1,19 @@
 import React, { useState } from 'react';
 
-export interface Snippet {
+export interface Link {
   id: number;
-  text: string;
+  url: string;
 }
 
-export interface SnippetItemProps {
-  snippet: Snippet;
-  onEdit: (newSnippet: string) => void;
+export interface LinkItemProps {
+  link: Link;
+  onEdit: (newLink: string) => void;
   onDelete: () => void;
 }
 
-export const SnippetItem: React.FC<SnippetItemProps> = ({ snippet, onEdit, onDelete }) => {
+export const LinkItem: React.FC<LinkItemProps> = ({ link, onEdit, onDelete }) => {
   const [isEditing, setIsEditing] = useState(false);
-  const [editedSnippet, setEditedSnippet] = useState(snippet.text);
+  const [editedSnippet, setEditedLink] = useState(link.url);
 
   const handleEditClick = () => {
     setIsEditing(true);
@@ -25,7 +25,7 @@ export const SnippetItem: React.FC<SnippetItemProps> = ({ snippet, onEdit, onDel
   };
 
   const handleCopyClick = () => {
-    navigator.clipboard.writeText(snippet.text);
+    navigator.clipboard.writeText(link.url);
   };
 
   return (
@@ -34,13 +34,13 @@ export const SnippetItem: React.FC<SnippetItemProps> = ({ snippet, onEdit, onDel
         <div>
           <textarea
             value={editedSnippet}
-            onChange={(e) => setEditedSnippet(e.target.value)}
+            onChange={(e) => setEditedLink(e.target.value)}
           />
           <button onClick={handleSaveClick}>Save</button>
         </div>
       ) : (
         <div>
-          <span>{snippet.text}</span>
+          <span>{link.url}</span>
           <button onClick={handleEditClick}>Edit</button>
           <button onClick={handleCopyClick}>Copy</button>
           <button onClick={onDelete}>Delete</button>
