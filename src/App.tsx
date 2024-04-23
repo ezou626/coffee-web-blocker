@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from './components/BlockListItem';
 import { BlockList, BlockListList } from './components/BlockListList';
-import './globals.css';
 
 // Define a sample link for initial state when local storage is empty
 const link_1: Link = { id: 1, url: 'https://youtube.com' };
