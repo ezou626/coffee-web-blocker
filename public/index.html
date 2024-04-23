@@ -1,29 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chrome Extension Text Collector</title>
-  </head>
-  <body>
-    <div id="root" style="width: 300px; height: 400px; display: flex;"></div>
-    <div>
-      <h1>Simple Form</h1>
-      <form id="myForm">
-        <label for="textInput">Enter Text:</label>
-        <input type="text" id="textInput" name="textInput" required />
-        <button type="submit">Submit</button>
-      </form>
-
-      <button id="getSync" type="button">Get storage details</button>
-
-      <button id="submitCreds" type="button">Submit credentials</button>
-      <button id="submitList" type="button">Submit block list</button>
-      <button id="submitSced" type="button">Submit schedule</button>
-
-      <!-- Include your JavaScript file -->
-      <script src="backend_endpoints.js"></script>
-      <script src="script.js"></script>
-    </div>
-  </body>
+</head>
+<body>
+    <div id="root"></div>
+</body>
 </html>
