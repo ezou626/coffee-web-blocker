@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
-import { Link, LinkItem } from './LinkItem';
 
-export type { Link } from './LinkItem';
+export interface Link {
+  id: number;
+  url: string;
+}
 
 export interface BlockListProps {
   removeSelf: () => void,
@@ -21,14 +23,14 @@ export const BlockListItem: React.FC<BlockListProps> = ({
     setSelected(!selected);
     if (selected) {
       addSelf();
-      return;
+    } else {
+      removeSelf();
     }
-    removeSelf();
   }
 
   if (selected) {
     return (
-      <li className="text-xl">
+      <li className="">
         <button onClick={handleClick}>{listName}</button>
       </li>
     );

@@ -1,41 +1,39 @@
 import React, { useState } from 'react';
-import { Link, LinkItem } from './LinkItem';
-import { BlockListItem } from './BlockListItem';
+import { Link, BlockListItem } from './BlockListItem';
 
 export interface BlockListListProps {
   lists: BlockList[];
+  setSelectedLists: React.Dispatch<React.SetStateAction<Set<number>>>;
 }
 
 export interface BlockList {
   id: number;
   name: string;
-  links: Link[];
+  // no links need to be stored since this is just frontend
 }
 
 export const BlockListList: React.FC<BlockListListProps> = ({
   lists,
+  setSelectedLists,
 }) => {
-  const [state, setState] = useState(() => new Set<number>());
 
-  const addItem = (item: number) => (() => setState(prev => new Set(prev).add(item)));
+  const addItem = (item: number) => (() => setSelectedLists(prev => new Set(prev).add(item)));
 
   const removeItem = (item: number) => (() =>
-    setState(prev => {
+    setSelectedLists(prev => {
       const next = new Set(prev);
-
       next.delete(item);
-
       return next;
     }));
 
   return (
-    <ul className="">
-      {lists.map((list: BlockList) => (
+    <ul id='lists' className="">
+      {lists.map((blocklist: BlockList) => (
         <BlockListItem
-          key={list.id}
-          listName={list.name}
-          removeSelf={removeItem(list.id)}
-          addSelf={removeItem(list.id)}
+          key={blocklist.id}
+          listName={blocklist.name}
+          removeSelf={removeItem(blocklist.id)}
+          addSelf={addItem(blocklist.id)}
         />
       ))}
     </ul>

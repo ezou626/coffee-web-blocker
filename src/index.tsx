@@ -1,12 +1,10 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
+import { createRoot } from 'react-dom/client';
 import App from './App';
 import './globals.css';
 
-const root = document.createElement("div")
-root.className = "container"
-document.body.appendChild(root)
-const rootDiv = ReactDOM.createRoot(root);
+const root = document.getElementById("root")!;
+const rootDiv = createRoot(root);
 rootDiv.render(
   <React.StrictMode>
     <App />
