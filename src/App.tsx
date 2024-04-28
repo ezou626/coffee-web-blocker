@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import * as React from 'react';
+import { useState, useEffect } from 'react';
 import { BlockList, BlockListMetadata, Link } from './api/BlockListAPI';
 import BlockListList from './components/BlockListList';
 
@@ -44,28 +45,6 @@ function App() {
       }
     });
   }, []);
-
-  // // Handler for editing a snippet
-  // const handleEditLink = (id: number, newText: string) => {
-  //   // Create a new array with the updated snippet
-  //   const updatedLinks = links.map((link) =>
-  //     link.id === id ? { ...link, text: newText } : link
-  //   );
-  //   // Update the state with the new array
-  //   setLinks(updatedLinks);
-  //   // Save the updated snippets to local storage
-  //   chrome.storage.local.set({ link: updatedLinks });
-  // };
-
-  // // Handler for deleting a snippet
-  // const handleDeleteLink = (id: number) => {
-  //   // Create a new array without the deleted snippet
-  //   const updatedLinks = links.filter((link) => link.id !== id);
-  //   // Update the state with the new array
-  //   setLinks(updatedLinks);
-  //   // Save the updated snippets to local storage
-  //   chrome.storage.local.set({ links: updatedLinks });
-  // };
 
   return (
     <div className='min-w-full min-h-full flex-col flex items-center bg-red-300 text-orange-500'>
