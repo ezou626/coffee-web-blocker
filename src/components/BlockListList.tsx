@@ -1,18 +1,13 @@
-import React, { useState } from 'react';
-import { Link, BlockListItem } from './BlockListItem';
+import React from 'react';
+import BlockListItem from './BlockListItem';
+import { BlockListMetadata } from '../api/BlockListAPI';
 
 export interface BlockListListProps {
-  lists: BlockList[];
+  lists: BlockListMetadata[];
   setSelectedLists: React.Dispatch<React.SetStateAction<Set<number>>>;
 }
 
-export interface BlockList {
-  id: number;
-  name: string;
-  // no links need to be stored since this is just frontend
-}
-
-export const BlockListList: React.FC<BlockListListProps> = ({
+const BlockListList: React.FC<BlockListListProps> = ({
   lists,
   setSelectedLists,
 }) => {
@@ -26,9 +21,9 @@ export const BlockListList: React.FC<BlockListListProps> = ({
       return next;
     }));
 
-  return (
+  return (<>
     <ul id='lists' className="">
-      {lists.map((blocklist: BlockList) => (
+      {lists.map((blocklist: BlockListMetadata) => (
         <BlockListItem
           key={blocklist.id}
           listName={blocklist.name}
@@ -37,7 +32,8 @@ export const BlockListList: React.FC<BlockListListProps> = ({
         />
       ))}
     </ul>
-  );
+    <button id='begin' className="text-xl p-2 font-bold">Start</button>
+  </>);
 };
 
 export default BlockListList;

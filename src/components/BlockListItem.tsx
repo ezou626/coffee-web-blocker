@@ -1,17 +1,12 @@
 import React, { useState } from 'react';
 
-export interface Link {
-  id: number;
-  url: string;
-}
-
 export interface BlockListProps {
   removeSelf: () => void,
   addSelf: () => void;
   listName: string
 }
 
-export const BlockListItem: React.FC<BlockListProps> = ({
+const BlockListItem: React.FC<BlockListProps> = ({
   listName,
   removeSelf,
   addSelf
