@@ -14,6 +14,6 @@ chrome.runtime.onInstalled.addListener(() => {
 })
 
 // detect open tab
-chrome.tabs.onCreated.addListener((tab) => {
+// chrome.tabs.onCreated.addListener((tab) => {
 
-})
+// })
