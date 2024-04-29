@@ -1,5 +1,4 @@
 import React from 'react';
-import BlockListItem from './BlockListItem';
 import { BlockListMetadata } from '../api/BlockListAPI';
 
 export interface BlockListListProps {
@@ -34,7 +33,6 @@ const BlockListList: React.FC<BlockListListProps> = ({
         </li>
       ))}
     </ul>
-    <button id='begin' className="text-xl p-2 font-bold">Start</button>
   </>);
 };
 

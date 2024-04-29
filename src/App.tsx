@@ -42,7 +42,10 @@ function App() {
   }, []);
 
   return (
-    <div className='min-w-full min-h-full flex-col flex items-center bg-red-300 text-orange-500'>
+    <div className='min-w-full min-h-full flex-col flex items-center bg-tan text-brown'>
+      <h1 className="text-xl p-2 font-bold">Coffee Grindset</h1>
+
+      <>
       <h1 className="text-xl p-2 font-bold">Start a New Session</h1>
       <BlockListList
         lists={lists}
@@ -53,6 +56,8 @@ function App() {
         {generate_selected(selectedLists)}
       </ul>
       <button id='begin' className="text-xl p-2 font-bold">Start</button>
+      </>
+
     </div>
   );
 }
