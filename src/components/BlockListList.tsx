@@ -4,32 +4,34 @@ import { BlockListMetadata } from '../api/BlockListAPI';
 
 export interface BlockListListProps {
   lists: BlockListMetadata[];
+  selectedLists: Set<number>;
   setSelectedLists: React.Dispatch<React.SetStateAction<Set<number>>>;
 }
 
 const BlockListList: React.FC<BlockListListProps> = ({
   lists,
+  selectedLists,
   setSelectedLists,
 }) => {
 
-  const addItem = (item: number) => (() => setSelectedLists(prev => new Set(prev).add(item)));
-
-  const removeItem = (item: number) => (() =>
-    setSelectedLists(prev => {
-      const next = new Set(prev);
-      next.delete(item);
-      return next;
-    }));
+  const handleClick = (id: number) => (() => {
+    if (selectedLists.has(id)) {
+      setSelectedLists(prev => {
+        const next = new Set(prev);
+        next.delete(id);
+        return next;
+      });
+    } else {
+      setSelectedLists(prev => new Set(prev).add(id))
+    }
+  })
 
   return (<>
     <ul id='lists' className="">
       {lists.map((blocklist: BlockListMetadata) => (
-        <BlockListItem
-          key={blocklist.id}
-          listName={blocklist.name}
-          removeSelf={removeItem(blocklist.id)}
-          addSelf={addItem(blocklist.id)}
-        />
+        <li key={blocklist.id} className={ selectedLists.has(blocklist.id) ? "text-red-100" : "text-blue-100"}>
+          <button onClick={handleClick(blocklist.id)}>{blocklist.name}</button>
+        </li>
       ))}
     </ul>
     <button id='begin' className="text-xl p-2 font-bold">Start</button>

@@ -16,6 +16,7 @@
   "scripts": {
     "build": "webpack --config webpack.config.js",
     "watch": "webpack -w --config webpack.config.js",
+    "dev": "webpack -w --config webpack_dev.config.js",
     "test": "jest --watchAll --detectOpenHandles",
     "coverage": "jest --coverage"
   },

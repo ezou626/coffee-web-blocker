@@ -3,11 +3,6 @@ import { useState, useEffect } from 'react';
 import { BlockList, BlockListMetadata, Link } from './api/BlockListAPI';
 import BlockListList from './components/BlockListList';
 
-// Define a sample link for initial state when local storage is empty
-const link_1: Link = { id: 1, url: 'https://youtube.com' };
-const link_2: Link = { id: 2, url: 'https://nbc.com' };
-const link_3: Link = { id: 2, url: 'https://abc.com' };
-
 const list_1: BlockListMetadata = {
   id: 1,
   name: "News"
@@ -25,7 +20,7 @@ const list_3: BlockListMetadata = {
 
 const generate_selected = (set: Set<number>) => {
   const array = Array.from(set); 
-  return array.map((number) => <p>{number}</p>)
+  return array.map((number) => <li key={number}>{number}</li>)
 }
 
 function App() {
@@ -51,6 +46,7 @@ function App() {
       <h1 className="text-xl p-2 font-bold">Start a New Session</h1>
       <BlockListList
         lists={lists}
+        selectedLists={selectedLists}
         setSelectedLists={setSelectedLists}
       />
       <ul id='lists' className="">

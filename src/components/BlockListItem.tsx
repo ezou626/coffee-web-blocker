@@ -1,39 +1,31 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { BlockListMetadata } from '../api/BlockListAPI';
 
 export interface BlockListProps {
+  selected: boolean,
   removeSelf: () => void,
   addSelf: () => void;
-  listName: string
+  key: BlockListMetadata
 }
 
 const BlockListItem: React.FC<BlockListProps> = ({
-  listName,
+  key,
   removeSelf,
-  addSelf
+  addSelf,
+  selected
 }) => {
 
-  const [selected, setSelected] = useState(false);
-  
   const handleClick = () => {
-    setSelected(!selected);
-    if (selected) {
-      addSelf();
-    } else {
-      removeSelf();
-    }
-  }
-
-  if (selected) {
-    return (
-      <li className="">
-        <button onClick={handleClick}>{listName}</button>
-      </li>
-    );
-  }
+      if (selected) {
+        removeSelf();
+      } else {
+        addSelf();
+    };
+  };
 
   return (
-    <li className="">
-        <button onClick={handleClick}>{listName}</button>
+    <li key={key.id} className={ selected ? "text-red-100" : "text-blue-100"}>
+      <button onClick={handleClick}>{key.name}</button>
     </li>
   );
 };
