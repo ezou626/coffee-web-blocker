@@ -13,7 +13,42 @@ chrome.runtime.onInstalled.addListener(() => {
   ]});
 })
 
+chrome.runtime.onInstalled.addListener((message, sender, sendResponse) => {
+  if (message.action === 'getCurrentTab') {
+    chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+      sendResponse({ tabUrl: tabs[0].url });
+    });
+  }
+  return true;
+});
+
+chrome.runtime.onInstalled.addListener((message, sender, sendResponse) => {
+  if (message.action === 'sayhello') {
+    sendResponse({message: "back"});
+  }
+  return true;
+});
+
+
 // detect open tab
 // chrome.tabs.onCreated.addListener((tab) => {
 
 // })
+
+chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+  if (message.action === 'getCurrentTab') {
+    chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+      sendResponse({ tabUrl: tabs[0].url });
+    });
+  }
+  return true;
+});
+
+chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
+  if (request.message == 'openSettingsPage') {
+    chrome.tabs.create({
+      active: true,
+      url: 'settings.html'
+    }, null);
+  }
+});

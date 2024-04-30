@@ -3,7 +3,10 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const path = require("path");
 
 module.exports = {
-    entry: "./src/index.tsx",
+    entry: {
+      main: "./src/index.tsx", 
+      page: "./src/page_index.tsx",
+    },
     mode: "development",
     module: {
         rules: [
@@ -26,14 +29,23 @@ module.exports = {
     },
     output: {
         path: path.resolve(__dirname, "dev_dist"),
-        filename: "bundle.js",
+        filename: "[name]-bundle.js",
+        chunkFilename: '[id].[chunkhash].js'
     },
     plugins: [
+      new HTMLPlugin({
+        inject: false,
+        template: './public/index.html',
+        chunks: ['main'],
+        filename: 'index.html'
+      }),
+      new HTMLPlugin({
+        inject: false,
+        template: './public/settings.html',
+        chunks: ['page'],
+        filename: 'settings.html'
+      }),
         /* Necessary to use HTMLPlugin to inject the bundle into the index.html */
-        new HTMLPlugin({
-            title: "development",
-            template: "./public/index.html",
-        }),
         new CopyWebpackPlugin({
             patterns: [
                 { 

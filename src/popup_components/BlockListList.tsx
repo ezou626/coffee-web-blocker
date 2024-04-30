@@ -25,15 +25,17 @@ const BlockListList: React.FC<BlockListListProps> = ({
     }
   })
 
-  return (<>
+  return (<div className="flex-col flex items-center bg-tan text-brown">
+    <h1 className="text-lg">Start a New Session</h1>
     <ul id='lists' className="">
       {lists.map((blocklist: BlockListMetadata) => (
-        <li key={blocklist.id} className={ selectedLists.has(blocklist.id) ? "text-red-100" : "text-blue-100"}>
+        <li key={blocklist.id} className={ selectedLists.has(blocklist.id) ? "font-bold" : ""}>
           <button onClick={handleClick(blocklist.id)}>{blocklist.name}</button>
         </li>
       ))}
     </ul>
-  </>);
+    <button id='begin' className="bg-brown hover:bg-toast text-cream p-1 rounded-md mt-1">Block Lists</button>
+  </div>);
 };
 
 export default BlockListList;

@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { useState, useEffect } from 'react';
 import { BlockList, BlockListMetadata, Link } from './api/BlockListAPI';
-import BlockListList from './components/BlockListList';
+import BlockListList from './popup_components/BlockListList';
+import BlockListUpdater from './popup_components/BlockListUpdater';
 
 const list_1: BlockListMetadata = {
   id: 1,
@@ -23,7 +24,7 @@ const generate_selected = (set: Set<number>) => {
   return array.map((number) => <li key={number}>{number}</li>)
 }
 
-function App() {
+function Popup() {
   // Define the state variable for storing the list of blocklists
   const [lists, setLists] = useState<BlockListMetadata[]>([]);
   const [selectedLists, setSelectedLists] = useState(new Set<number>());
@@ -41,25 +42,26 @@ function App() {
     });
   }, []);
 
-  return (
-    <div className='min-w-full min-h-full flex-col flex items-center bg-tan text-brown'>
-      <h1 className="text-xl p-2 font-bold">Coffee Grindset</h1>
+  const newPage = () => {
+    chrome.runtime.sendMessage({message: 'openSettingsPage'}, 
+  (()=> {return;}));
+  }
 
-      <>
-      <h1 className="text-xl p-2 font-bold">Start a New Session</h1>
+  return (
+    <div className='min-w-full min-h-full flex-col flex items-center bg-tan text-brown space-y-5'>
+      <h1 className="text-2xl p-2 font-bold">Coffee Web Blocker</h1>
+
       <BlockListList
         lists={lists}
         selectedLists={selectedLists}
         setSelectedLists={setSelectedLists}
       />
-      <ul id='lists' className="">
-        {generate_selected(selectedLists)}
-      </ul>
-      <button id='begin' className="text-xl p-2 font-bold">Start</button>
-      </>
+      
+      <BlockListUpdater />
 
+      <button onClick={newPage}>Advanced Settings</button>
     </div>
   );
 }
 
-export default App;
+export default Popup;

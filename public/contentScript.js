@@ -1,12 +1,14 @@
-chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
-  if (message === null) {
-    return false;
-  }
+// chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+//   if (message.action === 'getCurrentTab') {
+//     chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+//       sendResponse({ tabUrl: tabs[0].url });
+//     });
+//   }
+//   return true;
+// });
 
-  if (message.action === 'getCurrentTab') {
-    chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-      sendResponse({ tab: tabs[0] });
-    });
-    return true; // Indicates async response
-  }
-});
+// chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+//   if (message.action === 'sayhello') {
+//     sendResponse({message: "Hello World!"});
+//   }
+// });
