@@ -4,11 +4,10 @@
 
 import React, { useState, useEffect } from "react";
 
-const BlockListUpdater = () => {
+const BlockListUpdater: React.FC = () => {
   const [currentTabUrl, setCurrentTabUrl] = useState<string | null>(null);
 
   useEffect(() => {
-    console.log("trying send!");
     chrome.runtime.sendMessage({ action: 'getCurrentTab' }, (response) => {
         setCurrentTabUrl(response.tabUrl);
     });
