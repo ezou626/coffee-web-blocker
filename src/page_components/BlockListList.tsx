@@ -13,9 +13,9 @@ export const BlockListList: React.FC<BlockListListProps> = ({
   updateBlockList,
 }) => {
   return (
-    <div className="min-w-half min-h-screen flex flex-col items-center bg-tan">
-    <h1 className="text-3xl font-bold mb-8 text-brown">Edit Blocklists</h1>
-    <ul className="w-full">
+    <div className="min-w-half min-h-screen flex flex-col items-center bg-cream">
+    <h1 className="text-3xl font-bold mb-8 text-brown mt-5">Edit Blocklists</h1>
+    <ul className="w-full space-y-5">
       {lists.map(blockList => (
         <BlockListItem
           key={blockList.id}

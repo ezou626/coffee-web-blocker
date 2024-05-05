@@ -14,7 +14,7 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="min-w-full min-h-screen flex flex-col items-center bg-tan">
+    <div className="min-w-full min-h-screen flex flex-col items-center bg-cream">
       <BlockListList lists={lists} updateBlockList={updateBlockList} />
     </div>
   );

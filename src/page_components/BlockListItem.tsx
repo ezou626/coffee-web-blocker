@@ -34,7 +34,7 @@ export const BlockListItem: React.FC<BlockListItemProps> = ({
   return (
     <li className="my-2">
       <div className="flex flex-col">
-        <div className="flex justify-between items-center p-2 bg-toast text-cream rounded-lg">
+        <div className="flex justify-between items-center text-xl text-espresso rounded-lg">
           <span>{blockList.name}</span>
           <div>
             {blockList.links.map((website, index) => (
@@ -52,9 +52,9 @@ export const BlockListItem: React.FC<BlockListItemProps> = ({
           value={newWebsite}
           onChange={(e) => setNewWebsite(e.target.value)}
           placeholder="Add new site"
-          className="mt-2 p-1 rounded-md"
+          className="mt-2 p-1 rounded-md text-cream placeholder-cream placeholder-opacity-50 bg-toast"
         />
-        <button onClick={handleWebsiteAddition} className="text-brown bg-toast hover:bg-tan p-1 rounded-md mt-1">
+        <button onClick={handleWebsiteAddition} className="text-espresso font-bold bg-toast hover:bg-tan p-1 rounded-md mt-1">
           Add
         </button>
       </div>
