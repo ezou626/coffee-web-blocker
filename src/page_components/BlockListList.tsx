@@ -1,3 +1,6 @@
+/**
+ * BlockList Container in Chrome Extension Standalone Page
+ */
 
 import React from 'react';
 import { BlockList } from '../api/BlockListAPI';
