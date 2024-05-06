@@ -8,8 +8,6 @@ export interface BlockListMetadata {
     name: string;
 }
 
-export interface BlockList {
-    id: number;
-    name: string;
+export interface BlockList extends BlockListMetadata {
     links: Link[];
 }
