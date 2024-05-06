@@ -48,7 +48,7 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
   if (request.message == 'openSettingsPage') {
     chrome.tabs.create({
       active: true,
-      url: 'settings.html'
+      url: 'page.html'
     }, null);
   }
 });

@@ -62,10 +62,10 @@ background.js to register actions taken when a new tab is opened
 - Run the development server with hot reloading:
 
   ```bash
-  yarn run watch
+  yarn run dev
   ```
 
-- Load the unpacked extension in Chrome from the `dist` directory
+- Load the unpacked extension in Chrome from the `dev_dist` directory
 - Make changes to the source code and the extension will automatically reload
 
 ## Chrome Extension Architecture
@@ -92,10 +92,10 @@ Key aspects of the Manifest V3 configuration include:
 ## Project Architecture
 
 The project follows a modular architecture with separation of concerns:
-
-- `App`: The main component that manages the state and renders the `SnippetList`
-- `SnippetList`: Renders a list of `SnippetItem` components based on the saved snippets
-- `SnippetItem`: Represents an individual snippet with options to edit and delete
+- `Popup.tsx`: The React component for the popup
+- `Page.tsx`: The React component for the page
+- `index.tsx`: The entry point for the popup
+- `page_index.tsx`: The entry point for the page
 
 The communication between the extension's scripts is handled as follows:
 

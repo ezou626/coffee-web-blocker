@@ -4,7 +4,7 @@ const path = require("path");
 
 module.exports = {
     entry: {
-      main: "./src/index.tsx", 
+      popup: "./src/popup_index.tsx", 
       page: "./src/page_index.tsx",
     },
     mode: "development",
@@ -35,15 +35,15 @@ module.exports = {
     plugins: [
       new HTMLPlugin({
         inject: false,
-        template: './public/index.html',
-        chunks: ['main'],
-        filename: 'index.html'
+        template: './public/popup.html',
+        chunks: ['popup'],
+        filename: 'popup.html'
       }),
       new HTMLPlugin({
         inject: false,
-        template: './public/settings.html',
+        template: './public/page.html',
         chunks: ['page'],
-        filename: 'settings.html'
+        filename: 'page.html'
       }),
         /* Necessary to use HTMLPlugin to inject the bundle into the index.html */
         new CopyWebpackPlugin({
