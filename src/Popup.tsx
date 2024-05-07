@@ -43,7 +43,7 @@ function Popup() {
   }, []);
 
   const newPage = () => {
-    chrome.runtime.sendMessage({message: 'openSettingsPage'}, 
+    chrome.runtime.sendMessage({action: 'openSettingsPage'}, 
   (()=> {return;}));
   }
 
