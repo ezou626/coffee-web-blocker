@@ -25,7 +25,7 @@ const BlockListList: React.FC<BlockListListProps> = ({
     }
   })
 
-  return (<div className="flex-col flex items-center bg-tan text-brown">
+  return (<div className="flex-col flex items-center">
     <h1 className="text-lg">Start a New Session</h1>
     <ul id='lists' className="">
       {lists.map((blocklist: BlockListMetadata) => (
@@ -34,7 +34,7 @@ const BlockListList: React.FC<BlockListListProps> = ({
         </li>
       ))}
     </ul>
-    <button id='begin' className="bg-brown hover:bg-toast text-cream p-1 rounded-md mt-1">Block Lists</button>
+    <button id='begin' className="btn">Block</button>
   </div>);
 };
 

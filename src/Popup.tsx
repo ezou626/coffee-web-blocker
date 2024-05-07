@@ -36,7 +36,7 @@ const Popup: React.FC = () => {
   }
 
   return (
-    <div className='min-w-full min-h-full flex-col flex items-center bg-tan text-brown space-y-5'>
+    <div className='min-w-full min-h-full flex flex-col items-center  justify-center space-y-5'>
       <h1 className="text-2xl p-2 font-bold">Coffee Web Blocker</h1>
 
       <BlockListList
@@ -47,7 +47,7 @@ const Popup: React.FC = () => {
       
       <BlockListUpdater lists={lists} />
 
-      <button onClick={newPage}>Advanced Settings</button>
+      <button className='btn max-w-24' onClick={newPage}>Advanced Settings</button>
     </div>
   );
 }

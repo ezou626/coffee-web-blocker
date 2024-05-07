@@ -3,8 +3,16 @@
  */
 
 import React, { useState, useEffect } from "react";
+import { BlockListMetadata } from "../api/BlockListAPI";
 
-const BlockListUpdater: React.FC = () => {
+export interface BlockListUpdaterProps {
+  lists: BlockListMetadata[];
+}
+
+const BlockListUpdater: React.FC<BlockListUpdaterProps> = ({
+  lists
+}) => {
+  const [currentList, setCurrentList] = useState<number>(0);
   const [currentTabUrl, setCurrentTabUrl] = useState<string | null>(null);
 
   useEffect(() => {
@@ -13,11 +21,30 @@ const BlockListUpdater: React.FC = () => {
     });
   }, []);
 
+  const handleUrlAdd = () => {
+    const dbRequest = indexedDB.open(DB_NAME, DB_VERSION);
+    dbRequest.onsuccess = (event) => {
+      const db: IDBDatabase = dbRequest.result;
+      const linkTransaction = db.transaction(LINK_STORE, 'readwrite');
+      const linkStore = linkTransaction.objectStore(LINK_STORE);
+      linkStore.add({ blockListId: lists[currentList].id, url: currentTabUrl});
+    }
+  }
+
   return (
-  <div className="flex-col flex items-center bg-tan text-brown">
-    <h2 className="text-lg">Current Tab URL:</h2>
-    <p className="text-center max-w-60 max-h-fit overflow-wrap: break-words">{currentTabUrl && <>{currentTabUrl}</>}</p>
-    <button className="bg-brown hover:bg-toast text-cream p-1 rounded-md mt-1">Add URL to List</button>
+  <div className="flex-col flex items-center space-y-2">
+    <h2 className="text-md text-center max-w-xs max-h-12 overflow-y-scroll overflow-x-hidden">Current Tab URL: {currentTabUrl && <>{currentTabUrl}</>}</h2>
+    <select className="select w-full max-w-xs">
+      {lists.map((list, index) => (<option 
+        value={index} 
+        onClick={() => setCurrentList(index)}
+        key={index}
+      >{list.name}</option>))}
+    </select>
+    <span className="w-full">
+      <button onClick={handleUrlAdd} className="btn w-5/12 max-w-xs">Add URL to List</button>
+      <button className="btn w-7/12 max-w-xs">Add Domain to List</button>
+    </span>
   </div>
   );
 }
