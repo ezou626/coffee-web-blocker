@@ -3,6 +3,12 @@ const DB_VERSION = 1; // only integers
 const BLOCKLIST_STORE = 'blockLists';
 const LINK_STORE = 'links';
 
+const websitesToBlock = [
+  "reddit",
+  "netflix",
+  "youtube.com/shorts"
+];
+
 //initialize db, active lists, and settings
 chrome.runtime.onInstalled.addListener(() => {
   chrome.storage.local.set({settings: {'default': true}});
@@ -64,10 +70,13 @@ chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
 });
 
 chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
-  if (changeInfo.url) {
-    chrome.tabs.sendMessage(tabId, {
-      message: 'URL changed',
-      url: changeInfo.url
-    });
+  if (changeInfo.url && changeInfo.url !== chrome.runtime.getURL('block.html')) {
+    for (const domain of websitesToBlock) {
+      if (changeInfo.url.includes(domain)) {
+        chrome.tabs.update(tabId, {
+          url: chrome.runtime.getURL('block.html')
+        });
+      }
+    }
   }
 });
