@@ -2,7 +2,6 @@
 const websitesToBlock = [
   "reddit",
   "netflix",
-  "github",
   "youtube.com/shorts"
 ];
 
