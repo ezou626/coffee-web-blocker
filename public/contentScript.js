@@ -275,6 +275,7 @@ blockSites();
 
 chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
   if (request.message === 'URL changed') {
-    alert('URL changed to: ' + request.url);
+    // alert('URL changed to: ' + request.url);
+    blockSites();
   }
 });
