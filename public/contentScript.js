@@ -2,7 +2,8 @@
 const websitesToBlock = [
   "reddit",
   "netflix",
-  "github"
+  "github",
+  "youtube.com/shorts"
 ];
 
 const generateSTYLES = () => {
