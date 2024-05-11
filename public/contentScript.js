@@ -271,11 +271,23 @@ const blockSites = async() => {
   }
 }
 
+const blockSitesURL = async(url) => {
+  for (const domain of websitesToBlock) {
+    if (url.includes(domain)) {
+        document.open()
+        document.write("<html><head></head><body></body></html>")
+        document.head.innerHTML = generateSTYLES()
+        document.body.innerHTML = generateHTML(domain)
+        document.close()
+    }
+  }
+}
+
 blockSites();
 
 chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
   if (request.message === 'URL changed') {
     // alert('URL changed to: ' + request.url);
-    blockSites();
+    blockSitesURL(request.url);
   }
 });
