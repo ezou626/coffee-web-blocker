@@ -22,7 +22,16 @@ const BlockListUpdater: React.FC<BlockListUpdaterProps> = ({
     });
   }, []);
 
-  //Extract url
+  //Extract domain from url
+  const getDomainFromURL = (url: string) => {
+    try {
+      const newURL = new URL(url)
+      return newURL.hostname;
+    } catch (error: any){
+      console.error('Error parsing URL:', error);
+      return null
+    }
+  }
 
   const handleUrlAdd = () => {
     const dbRequest = indexedDB.open(DB_NAME, DB_VERSION);
@@ -33,6 +42,20 @@ const BlockListUpdater: React.FC<BlockListUpdaterProps> = ({
       linkStore.add({ blockListId: lists[currentList].id, url: currentTabUrl});
     }
   }
+
+  const handleDomainAdd = () => {
+    if (!currentTabUrl) return;
+    const domain = getDomainFromURL(currentTabUrl);
+    if (!domain) return;
+
+    const dbRequest = indexedDB.open(DB_NAME, DB_VERSION);
+    dbRequest.onsuccess = (event) => {
+      const db: IDBDatabase = dbRequest.result;
+      const linkTransaction = db.transaction(LINK_STORE, 'readwrite');
+      const linkStore = linkTransaction.objectStore(LINK_STORE);
+      linkStore.add({ blockListId: lists[currentList].id, url: domain});
+    }
+  };
 
   return (
   <div className="flex-col flex items-center space-y-2">
@@ -46,7 +69,7 @@ const BlockListUpdater: React.FC<BlockListUpdaterProps> = ({
     </select>
     <span className="w-full">
       <button onClick={handleUrlAdd} className="btn w-5/12 max-w-xs">Add URL to List</button>
-      <button className="btn w-7/12 max-w-xs">Add Domain to List</button>
+      <button className="btn w-7/12 max-w-xs" onClick={handleDomainAdd}>Add Domain to List</button>
     </span>
   </div>
   );
