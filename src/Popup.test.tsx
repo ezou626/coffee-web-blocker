@@ -3,11 +3,11 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import * as sinon from 'sinon';
 import * as chrome from 'sinon-chrome';
 import 'jest-sinon';
-import App from './App';
+import Popup from './Popup';
 
 (global as any).chrome = chrome;
 
-describe('App', () => {
+describe('Popup', () => {
   afterEach(() => {
     chrome.flush();
   });
@@ -15,7 +15,7 @@ describe('App', () => {
   it('renders Snippet Collector header', async () => {
     chrome.storage.local.get.withArgs('snippets').yields({ snippets: [] });
 
-    render(<App />);
+    render(<Popup />);
     const headerElement = await screen.findByText(/Snippet Collector/i);
     expect(headerElement).toBeInTheDocument();
 
@@ -25,7 +25,7 @@ describe('App', () => {
   it('renders sample snippet when snippets are undefined in chrome storage', async () => {
     chrome.storage.local.get.withArgs('snippets').yields({ snippets: undefined });
 
-    render(<App />);
+    render(<Popup />);
     const snippetElements = await screen.findAllByRole('listitem');
     expect(snippetElements).toHaveLength(1);
     expect(snippetElements[0]).toHaveTextContent('Sample snippet');
@@ -38,7 +38,7 @@ describe('App', () => {
     ];
     chrome.storage.local.get.withArgs('snippets').yields({ snippets: mockSnippets });
 
-    render(<App />);
+    render(<Popup />);
     const snippetElements = await screen.findAllByRole('listitem');
     expect(snippetElements).toHaveLength(2);
     expect(snippetElements[0]).toHaveTextContent('Snippet 1');
@@ -52,7 +52,7 @@ describe('App', () => {
     ];
     chrome.storage.local.get.withArgs('snippets').yields({ snippets: mockSnippets });
 
-    render(<App />);
+    render(<Popup />);
     const editButtons = await screen.findAllByText('Edit');
     expect(editButtons).toHaveLength(2);
     const editButton = editButtons[0];
@@ -73,7 +73,7 @@ describe('App', () => {
     const mockSnippets = [{ id: 1, text: 'Snippet to delete' }];
     chrome.storage.local.get.withArgs('snippets').yields({ snippets: mockSnippets });
 
-    render(<App />);
+    render(<Popup />);
     const deleteButton = await screen.findByText('Delete');
     fireEvent.click(deleteButton);
 
@@ -83,7 +83,7 @@ describe('App', () => {
   it('sets initial state with sample snippet when local storage is empty', async () => {
     chrome.storage.local.get.withArgs('snippets').yields({});
 
-    render(<App />);
+    render(<Popup />);
     const snippetElements = await screen.findAllByRole('listitem');
     expect(snippetElements).toHaveLength(1);
     expect(snippetElements[0]).toHaveTextContent('Sample snippet');
@@ -92,7 +92,7 @@ describe('App', () => {
   it('sets initial state with empty array when snippets key is an empty array in local storage', async () => {
     chrome.storage.local.get.withArgs('snippets').yields({ snippets: [] });
 
-    render(<App />);
+    render(<Popup />);
     const snippetElements = screen.queryAllByRole('listitem');
     expect(snippetElements).toHaveLength(0);
   });
