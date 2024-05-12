@@ -35,6 +35,15 @@ const Popup: React.FC = () => {
   (()=> {return;}));
   }
 
+  //Send a message to background script for updating 
+  const updateBlockList = (newDomain: string) => {
+    chrome.runtime.sendMessage({action: 'UPDATE_DOMAINS', data: newDomain}, response => {
+      console.log('Response from background:', response);
+    });
+  }
+
+
+
   return (
     <div className='min-w-full min-h-full flex flex-col items-center  justify-center space-y-5'>
       <h1 className="text-2xl p-2 font-bold">Coffee Web Blocker</h1>

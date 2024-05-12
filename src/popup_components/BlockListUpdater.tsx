@@ -4,6 +4,7 @@
 
 import React, { useState, useEffect } from "react";
 import { BlockListMetadata } from "../api/BlockListAPI";
+import { DB_NAME, DB_VERSION, LINK_STORE} from '../config';
 
 export interface BlockListUpdaterProps {
   lists: BlockListMetadata[];
@@ -20,6 +21,8 @@ const BlockListUpdater: React.FC<BlockListUpdaterProps> = ({
         setCurrentTabUrl(response.tabUrl);
     });
   }, []);
+
+  //Extract url
 
   const handleUrlAdd = () => {
     const dbRequest = indexedDB.open(DB_NAME, DB_VERSION);
