@@ -126,5 +126,5 @@ chrome.tabs.onActivated.addListener(async (activeInfo) => {
 })
 
 chrome.tabs.onUpdated.addListener(async (tabId, changeInfo, tab) => {
-  enforceTab(changeInfo.url, tabId);
+  enforceTab(tab.url, tabId); //used to be changeInfo.url, it errored somehow
 });
