@@ -37,6 +37,7 @@ const BlockListUpdater: React.FC<BlockListUpdaterProps> = ({
     if (currentList === 0) { //didn't select list yet
       return;
     }
+    if (!currentTabUrl) return;
     const dbRequest = indexedDB.open(DB_NAME, DB_VERSION);
     dbRequest.onsuccess = (event) => {
       const db: IDBDatabase = dbRequest.result;
@@ -53,7 +54,6 @@ const BlockListUpdater: React.FC<BlockListUpdaterProps> = ({
     if (!currentTabUrl) return;
     const domain = getDomainFromURL(currentTabUrl);
     if (!domain) return;
-
     const dbRequest = indexedDB.open(DB_NAME, DB_VERSION);
     dbRequest.onsuccess = (event) => {
       const db: IDBDatabase = dbRequest.result;
@@ -78,8 +78,8 @@ const BlockListUpdater: React.FC<BlockListUpdaterProps> = ({
       >{list.name}</option>))}
     </select>
     <span className="w-full">
-      <button onClick={handleUrlAdd} className="btn w-5/12 max-w-xs">Add URL to List</button>
-      <button className="btn w-7/12 max-w-xs" onClick={handleDomainAdd}>Add Domain to List</button>
+      <button onClick={handleUrlAdd} className="btn w-5/12 max-w-xs">Add Just URL</button>
+      <button className="btn w-7/12 max-w-xs" onClick={handleDomainAdd}>Add Entire Site</button>
     </span>
   </div>
   );
