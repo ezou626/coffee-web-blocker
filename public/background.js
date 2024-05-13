@@ -2,6 +2,7 @@ const DB_NAME = 'BlockListDB';
 const DB_VERSION = 1; // only integers
 const BLOCKLIST_STORE = 'blockLists';
 const LINK_STORE = 'links';
+const MOVEMENT_TIME = 100;
 const DEV_MODE = true;
 
 //initialize db, active lists, and settings
@@ -90,6 +91,26 @@ chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
 });
 
 /**
+ * Blocks tab when user is "no longer moving tab"
+ * @param {*} tabId 
+ * @param {*} url 
+ * @param {*} depth 
+ */
+const blockTab = (tabId, url, depth) => {
+  try {
+    setTimeout(() => chrome.tabs.update(tabId, {
+      url: chrome.runtime.getURL('block.html')
+    }), MOVEMENT_TIME);
+  } catch (e) {
+    if (depth == 10) {
+      console.log(e);
+    } else {
+      setTimeout(() => blockTab(tabId, url, depth + 1), MOVEMENT_TIME)
+    }
+  } 
+}
+
+/**
  * Runs URL check and enforces blocking on tab if necessary
  * @param {*} url the URL of the tab to check
  * @param {*} tabId the tabId as returned from Chrome APIs
@@ -106,9 +127,7 @@ const enforceTab = async (url, tabId) => {
   const websitesToBlock = await chrome.storage.local.get('blocked');
   for (const domain of websitesToBlock['blocked']) {
     if (url.includes(domain)) {
-      chrome.tabs.update(tabId, {
-        url: chrome.runtime.getURL('block.html')
-      });
+      blockTab(tabId, url, 0);
     }
   }
 }
@@ -116,13 +135,15 @@ const enforceTab = async (url, tabId) => {
 chrome.runtime.onMessage.addListener(async (message, sender, sendResponse) => {
   if (message.action == 'checkCurrentTab') {
     const tabs = await chrome.tabs.query({ currentWindow: true, active: true });
-    enforceTab(tabs[0].url, tabs[0].tabId);
+    if (tabs.length > 0) {
+      enforceTab(tabs[0].url, tabs[0].tabId);
+    }
   };
 })
 
 chrome.tabs.onActivated.addListener(async (activeInfo) => {
   const tabs = await chrome.tabs.query({ currentWindow: true, active: true });
-  enforceTab(tabs[0].url, tabs[0].tabId);
+  enforceTab(tabs[0].url, tabs[0].tabId)
 })
 
 chrome.tabs.onUpdated.addListener(async (tabId, changeInfo, tab) => {
