@@ -12,7 +12,7 @@
     "react-select": "^5.8.0"
   },
   "scripts": {
-    "build": "webpack --config  --node-env=production webpack.config.js",
+    "build": "webpack --config webpack.config.js",
     "watch": "webpack -w --config webpack.config.js",
     "dev": "webpack -w --config webpack_dev.config.js",
     "webpack-bundle-analyser": "webpack-analyse build -o dist -d data.json",
