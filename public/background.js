@@ -89,35 +89,42 @@ chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
   };
 });
 
-chrome.tabs.onActivated.addListener(async (activeInfo) => {
+/**
+ * Runs URL check and enforces blocking on tab if necessary
+ * @param {*} url the URL of the tab to check
+ * @param {*} tabId the tabId as returned from Chrome APIs
+ * @returns 
+ */
+const enforceTab = async (url, tabId) => {
   const isBlocking = await chrome.storage.local.get('isBlocking');
   if (isBlocking['isBlocking'] !== 'true') { //not blocking
     return;
   }
-  const tabs = await chrome.tabs.query({ currentWindow: true, active: true });
+  if (url === chrome.runtime.getURL('block.html')) {
+    return;
+  }
   const websitesToBlock = await chrome.storage.local.get('blocked');
   for (const domain of websitesToBlock['blocked']) {
-    if (tabs[0].url.includes(domain)) {
-      chrome.tabs.update(activeInfo.tabId, {
+    if (url.includes(domain)) {
+      chrome.tabs.update(tabId, {
         url: chrome.runtime.getURL('block.html')
       });
     }
   }
+}
+
+chrome.runtime.onMessage.addListener(async (message, sender, sendResponse) => {
+  if (message.action == 'checkCurrentTab') {
+    const tabs = await chrome.tabs.query({ currentWindow: true, active: true });
+    enforceTab(tabs[0].url, tabs[0].tabId);
+  };
+})
+
+chrome.tabs.onActivated.addListener(async (activeInfo) => {
+  const tabs = await chrome.tabs.query({ currentWindow: true, active: true });
+  enforceTab(tabs[0].url, tabs[0].tabId);
 })
 
 chrome.tabs.onUpdated.addListener(async (tabId, changeInfo, tab) => {
-  const isBlocking = await chrome.storage.local.get('isBlocking');
-  if (isBlocking['isBlocking'] !== 'true') { //not blocking
-    return;
-  }
-  const websitesToBlock = await chrome.storage.local.get('blocked');
-  if (changeInfo.url && changeInfo.url !== chrome.runtime.getURL('block.html')) {
-    for (const domain of websitesToBlock['blocked']) {
-      if (changeInfo.url.includes(domain)) {
-        chrome.tabs.update(tabId, {
-          url: chrome.runtime.getURL('block.html')
-        });
-      }
-    }
-  }
+  enforceTab(changeInfo.url, tabId);
 });

@@ -80,7 +80,15 @@ const BlockListList: React.FC<BlockListListProps> = ({
         blockedUrls.push(url);
       }
     }
-    chrome.storage.local.set({blocked: blockedUrls});
+    //nested promises ensure storage is updated before the worker checks current tab
+    chrome.storage.local.set({blocked: blockedUrls}).then(() => {
+      chrome.storage.local.set({isBlocking: 'true'}).then(() => {
+        setIsBlocking(true);
+        chrome.runtime.sendMessage({
+          action: 'checkCurrentTab'
+        })
+      })
+    });
     chrome.storage.local.set({isBlocking: 'true'});
     setIsBlocking(true);
   }
