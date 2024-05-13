@@ -27,7 +27,7 @@ module.exports = {
         extensions: [".tsx", ".ts", ".js", ".jsx"],
     },
     output: {
-        path: path.resolve(__dirname, "dev_dist"),
+        path: path.resolve(__dirname, "dist"),
         filename: "[name]-bundle.js",
         chunkFilename: '[id].[chunkhash].js'
     },
