@@ -1,6 +1,6 @@
 const HTMLPlugin = require("html-webpack-plugin");
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+// const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const path = require("path");
 
 module.exports = {
@@ -58,9 +58,9 @@ module.exports = {
               },
           ],
       }),
-      new BundleAnalyzerPlugin({
-        generateStatsFile: true,
-        statsFilename: 'data.json',
-      }),
+      // new BundleAnalyzerPlugin({
+      //   generateStatsFile: true,
+      //   statsFilename: 'data.json',
+      // }),
     ]
 };
