@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useState, useEffect } from 'react';
-import { BlockList, BlockListMetadata, Link } from './api/BlockListAPI';
+import { BlockListMetadata } from './api/BlockListAPI';
 import BlockListList from './popup_components/BlockListList';
 import BlockListUpdater from './popup_components/BlockListUpdater';
 import { DB_NAME, DB_VERSION, BLOCKLIST_STORE } from './config';
