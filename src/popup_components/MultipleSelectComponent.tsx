@@ -1,5 +1,5 @@
 import React from "react";
-import Select, { GroupBase, Props, StylesConfig } from "react-select";
+import Select, { GroupBase, Props } from "react-select";
 
 /**
  * Helps with types
