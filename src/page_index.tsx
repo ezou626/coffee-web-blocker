@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { createRoot } from 'react-dom/client';
-import Page from './Page';
+import Page from './AdvancedSettings';
 import './globals.css';
 
 const root = document.getElementById("root")!;
