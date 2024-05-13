@@ -40,18 +40,20 @@ const Popup: React.FC = () => {
 
 
   return (
-    <div className='min-w-full min-h-full flex flex-col items-center  justify-center space-y-5'>
-      <h1 className="text-2xl p-2 font-bold">Coffee Web Blocker</h1>
+    <div className='min-w-full min-h-full flex flex-col items-center justify-between'>
+      <h1 className="text-2xl font-bold mt-5">Coffee Web Blocker</h1>
 
-      <BlockListList
-        lists={lists}
-        selectedLists={selectedLists}
-        setSelectedLists={setSelectedLists}
-      />
-      
-      <BlockListUpdater lists={lists} />
+      <div className="flex-col space-y-5">
+        <BlockListList
+          lists={lists}
+          selectedLists={selectedLists}
+          setSelectedLists={setSelectedLists}
+        />
+        
+        <BlockListUpdater lists={lists} />
+      </div>
 
-      <button className='btn max-w-24' onClick={newPage}>Advanced Settings</button>
+      <button className='btn max-w-24 mb-5' onClick={newPage}>Advanced Settings</button>
     </div>
   );
 }
