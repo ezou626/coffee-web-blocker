@@ -29,7 +29,8 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, "dist"),
         filename: "[name]-bundle.js",
-        chunkFilename: '[id].[chunkhash].js'
+        chunkFilename: '[id].[chunkhash].js',
+        clean: true
     },
     plugins: [
       new HTMLPlugin({
@@ -44,17 +45,17 @@ module.exports = {
         chunks: ['page'],
         filename: 'page.html'
       }),
-        /* Necessary to use HTMLPlugin to inject the bundle into the index.html */
-        new CopyWebpackPlugin({
-            patterns: [
-                { 
-                    from: "public", 
-                    to: "", 
-                    globOptions: {
-                        ignore: ["**/index.html"], // This line excludes index.html
-                    },
-                },
-            ],
-        }),
+      /* Necessary to use HTMLPlugin to inject the bundle into the popup and page HTML */
+      new CopyWebpackPlugin({
+          patterns: [
+              { 
+                  from: "public", 
+                  to: "", 
+                  globOptions: {
+                      ignore: ["**/popup.html", "**/page.html"], // This line changes with folder
+                  },
+              },
+          ],
+      }),
     ]
 };
