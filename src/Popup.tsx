@@ -5,11 +5,6 @@ import BlockListList from './popup_components/BlockListList';
 import BlockListUpdater from './popup_components/BlockListUpdater';
 import { DB_NAME, DB_VERSION, BLOCKLIST_STORE } from './config';
 
-// const generate_selected = (set: Set<number>) => {
-//   const array = Array.from(set); 
-//   return array.map((number) => <li key={number}>{number}</li>)
-// }
-
 const Popup: React.FC = () => {
   // Define the state variable for storing the list of blocklists
   const [lists, setLists] = useState<BlockListMetadata[]>([]);
