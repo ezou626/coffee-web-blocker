@@ -99,15 +99,6 @@ We plan to use a popup to start impromptu blocking sessions and add local websit
 
 - We plan to explore Chrome DevTools for debugging during development.
 
-#### Documentation:
-
-- Plasmo: [https://docs.plasmo.com/](https://docs.plasmo.com/)
-- Chrome WebRequest API: [https://developer.chrome.com/docs/extensions/reference/api/webRequest](https://developer.chrome.com/docs/extensions/reference/api/webRequest)
-- Chrome Alarms API: [https://developer.chrome.com/docs/extensions/reference/api/alarms](https://developer.chrome.com/docs/extensions/reference/api/alarms)
-- Tabs API: [https://developer.chrome.com/docs/extensions/reference/api/tabs](https://developer.chrome.com/docs/extensions/reference/api/tabs)
-- Storage API: [https://developer.chrome.com/docs/extensions/reference/api/storage](https://developer.chrome.com/docs/extensions/reference/api/storage)
-- Chrome DevTools for Extension Debugging: [https://developer.chrome.com/docs/extensions/get-started/tutorial/debug](https://developer.chrome.com/docs/extensions/get-started/tutorial/debug)
-
 ### Data Storage (Shruti)
 
 [Explain what data you might need to store, and provide some overview of the models—that is, the structure of the data.]

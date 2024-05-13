@@ -1,9 +1,13 @@
 const HTMLPlugin = require("html-webpack-plugin");
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+// const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const path = require("path");
 
 module.exports = {
-    entry: "./src/index.tsx",
+    entry: {
+      popup: "./src/popup_index.tsx", 
+      page: "./src/page_index.tsx",
+    },
     mode: "production",
     module: {
         rules: [
@@ -25,23 +29,38 @@ module.exports = {
     },
     output: {
         path: path.resolve(__dirname, "dist"),
-        filename: "bundle.js",
+        filename: "[name]-bundle.js",
+        chunkFilename: '[id].[chunkhash].js',
+        clean: true
     },
     plugins: [
-        /* Necessary to use HTMLPlugin to inject the bundle into the index.html */
-        new HTMLPlugin({
-            template: "./public/index.html",
-        }),
-        new CopyWebpackPlugin({
-            patterns: [
-                { 
-                    from: "public", 
-                    to: "", 
-                    globOptions: {
-                        ignore: ["**/index.html"], // This line excludes index.html
-                    },
-                },
-            ],
-        }),
-    ],
+      new HTMLPlugin({
+        inject: false,
+        template: './public/popup.html',
+        chunks: ['popup'],
+        filename: 'popup.html'
+      }),
+      new HTMLPlugin({
+        inject: false,
+        template: './public/page.html',
+        chunks: ['page'],
+        filename: 'page.html'
+      }),
+      /* Necessary to use HTMLPlugin to inject the bundle into the popup and page HTML */
+      new CopyWebpackPlugin({
+          patterns: [
+              { 
+                  from: "public", 
+                  to: "", 
+                  globOptions: {
+                      ignore: ["**/popup.html", "**/page.html"], // This line changes with folder
+                  },
+              },
+          ],
+      }),
+      // new BundleAnalyzerPlugin({
+      //   generateStatsFile: true,
+      //   statsFilename: 'data.json',
+      // }),
+    ]
 };
