@@ -1,7 +1,5 @@
 # Coffee Web Blocker Chrome Extension (React, TypeScript, Webpack, Chrome API)
 
-## Product Landing Page
-
 ## Our Awesome Features
 
 - Users can create customizable lists of websites to block
@@ -9,6 +7,8 @@
 - Users can temporarily bypass the blocking of a website during a session if needed
 - Users add specific URL or the whole domain to a blocklist
 - Users can easily create, update, and delete their blocklists via the advanced settings page
+
+Visit our [landing page](https://coffeewebblocker.click/) here.
 
 ## Implementation Details
 
@@ -56,7 +56,7 @@
    - Enable "Developer mode"
    - Click "Load unpacked" and select the `dist` directory from the project
 
-## Demo Instruction
+## Demo Instruction and Screenshots
 
 - Navigate to a new tab
 
@@ -102,35 +102,8 @@ This project follows the Manifest V3 architecture for Chrome extensions. Key com
 - Popup window: Displays the extension's user interface when the extension icon is clicked
 - Advanced Settings Page: Displays editing and updating features of blocklists
 
-### Manifest V3
-
-This extension is built using the latest version of the Chrome extension manifest (Manifest V3). The `manifest.json` file defines the extension's properties, permissions, and scripts.
-
-Key aspects of the Manifest V3 configuration include:
-
-- `manifest_version`: Set to `3` to use Manifest V3
-- `background`: Specifies the background script as a service worker
-- `action`: Defines the popup HTML file
-- `permissions`: Declares the required permissions for the extension (storage, activeTab, contextMenus)
-- `content_scripts`: Specifies the content script to be injected into web pages
-
-## Project Architecture
-
-The project follows a modular architecture with separation of concerns:
-- `Popup.tsx`: The React component for the popup
-- `Page.tsx`: The React component for the page
-- `index.tsx`: The entry point for the popup
-- `page_index.tsx`: The entry point for the page
-
-The communication between the extension's scripts is handled as follows:
-
-- `contentScript.js`: Injected into web pages, captures selected text and sends a message to the background script
-- `background.js`: Listens for messages from the content script, saves snippets to storage, and manages the context menu
-
 ## Credits
 
-The initial setup of this project was based on the tutorial by [Harshita Joshi](https://github.com/Harshita-mindfire) on creating a Chrome extension with React and TypeScript. The corresponding Medium article can be found [here](https://medium.com/@tharshita13/creating-a-chrome-extension-with-react-a-step-by-step-guide-47fe9bab24a1).
+https://github.com/machadop1407he blocking page animation of this project was set up from the tutorial by [Pedro Henrique Machado](https://github.com/Harshita-mindfire) on creating a social media blocker. The repo is linked [here](https://github.com/machadop1407/SocialMediaBlocker-ChromeEXT)
 
-The project has been extended with additional functionality, testing setup, and documentation by Professor Lumbroso. The most difficult part was figuring out the right combination of packages for the testing suite (for instance, I would avoid `jest-chrome`, `mockzilla`, `mockzilla-webextension`, to name but a few).
-
-Our project forked Professor Lumbroso's repository as a base, changing to ECMAScript 6.
+Our project forked Professor [Lumbroso](https://github.com/jlumbroso/chrome-extension-text-collector)'s repository as a base, changing to ECMAScript 6.
