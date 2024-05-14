@@ -1,6 +1,8 @@
 # Coffee Web Blocker Chrome Extension (React, TypeScript, Webpack, Chrome API)
 
-## Features
+## Product Landing Page
+
+## Our Awesome Features
 
 - Users can create customizable lists of websites to block
 - Users can activate groups of list to block in the same blocking session
@@ -56,9 +58,25 @@
 
 ## Demo Instruction
 
-- Right-click on a web page and select "Capture Snippet" from the context menu to save the selected text as a snippet
+- Navigate to a new tab
+
+### Popup Demo
 - Click on the extension icon to open the popup window
-- In the popup, you can view, edit, and delete saved snippets
+- Insert Screenshot Here
+- Under "Start A New Session" in the popup, you can start a new session by selecting one or more list from the Search Lists dropdown and clicking on block.
+- Once a blocking session start, you can easily end the session by clicking on "End Blocking Session" button.
+- Under "Add Current Tab To List", the URL of the active tab is displayed. You can add this URL or the domain of this URL to a list chosen from the dropdown.
+
+### Setting Page Demo
+- Click on "Advanced Settings" to open the setting page.
+- On the setting page, you can easily create a new block lists, or delete existing block lists by clicking the 'x' next to each of them.
+- Clicking on each individual list would bring you to their respective editing page.
+- In the editing page, you can add URL and domain to that list, as well as view all existing URL/domains in that list and deleting them as needed.
+
+### Blocking Demo
+- Once a blocking session start, all URL and domains in the selected lists for that session will be blocked
+- You can temporarily bypass blocking by clicking "Unblock for Now"
+
 
 ## Development
 
@@ -79,6 +97,7 @@ This project follows the Manifest V3 architecture for Chrome extensions. Key com
 - `background.js`: Runs in the background and handles events and long-running tasks
 - `contentScript.js`: Injected into web pages to interact with the DOM and communicate with the background script
 - Popup window: Displays the extension's user interface when the extension icon is clicked
+- Advanced Settings Page: Displays editing and updating features of blocklists
 
 ### Manifest V3
 
