@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { useState, useEffect } from 'react';
-import { BlockListMetadata } from './api/BlockListAPI';
-import BlockListList from './popup_components/BlockListList';
-import BlockListUpdater from './popup_components/BlockListUpdater';
-import { DB_NAME, DB_VERSION, BLOCKLIST_STORE } from './config';
+import { BlockListMetadata } from '../api/BlockListAPI';
+import BlockListList from './BlockListList';
+import BlockListUpdater from './BlockListUpdater';
+import { DB_NAME, DB_VERSION, BLOCKLIST_STORE } from '../config';
 
 const Popup: React.FC = () => {
   // Define the state variable for storing the list of blocklists

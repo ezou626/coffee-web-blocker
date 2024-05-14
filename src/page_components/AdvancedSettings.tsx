@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { BlockListMetadata, LinkResult } from './api/BlockListAPI';
-import { DB_NAME, DB_VERSION, BLOCKLIST_STORE, LINK_STORE } from './config';
+import { BlockListMetadata, LinkResult } from '../api/BlockListAPI';
+import { DB_NAME, DB_VERSION, BLOCKLIST_STORE, LINK_STORE } from '../config';
 
 const AdvancedSettings: React.FC = () => {
   const [blockLists, setBlockLists] = useState<BlockListMetadata[]>([]);

@@ -4,8 +4,8 @@ const path = require("path");
 
 module.exports = {
     entry: {
-      popup: "./src/popup_index.tsx", 
-      page: "./src/page_index.tsx",
+      popup: "./src/popup_components/popup_index.tsx", 
+      page: "./src/page_components/page_index.tsx",
     },
     mode: "development",
     module: {
