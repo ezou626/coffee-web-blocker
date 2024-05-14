@@ -90,22 +90,40 @@ chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
   };
 });
 
+chrome.runtime.onMessage.addListener(async (message, sender, sendResponse) => {
+  if (message.action == 'unblock') {
+    const isBlocking = await chrome.storage.local.get('isBlocking');
+    if (isBlocking['isBlocking'] !== 'true') { //not blocking
+      return;
+    }
+    const websitesToBlock = await chrome.storage.local.get('blocked');
+    chrome.storage.local.set({ 
+      blocked: websitesToBlock['blocked'].filter((val) => val !== message.pattern)
+    });
+  };
+});
+
 /**
  * Blocks tab when user is "no longer moving tab"
  * @param {*} tabId 
  * @param {*} url 
  * @param {*} depth 
  */
-const blockTab = (tabId, url, depth) => {
+const blockTab = (targetTabId, url, pattern, depth) => {
   try {
-    setTimeout(() => chrome.tabs.update(tabId, {
+    chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+      if (message.action === 'getTabInfo') {
+          sendResponse({ matched: pattern });
+      }}
+    )
+    setTimeout(() => chrome.tabs.update(targetTabId, {
       url: chrome.runtime.getURL('block.html')
     }), MOVEMENT_TIME);
   } catch (e) {
     if (depth == 10) {
       console.log(e);
     } else {
-      setTimeout(() => blockTab(tabId, url, depth + 1), MOVEMENT_TIME)
+      setTimeout(() => blockTab(targetTabId, url, depth + 1), MOVEMENT_TIME)
     }
   } 
 }
@@ -125,9 +143,9 @@ const enforceTab = async (url, tabId) => {
     return;
   }
   const websitesToBlock = await chrome.storage.local.get('blocked');
-  for (const domain of websitesToBlock['blocked']) {
-    if (url.includes(domain)) {
-      blockTab(tabId, url, 0);
+  for (const site of websitesToBlock['blocked']) {
+    if (url.includes(site)) {
+      blockTab(tabId, url, site, 0);
     }
   }
 }
