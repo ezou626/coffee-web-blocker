@@ -133,16 +133,16 @@ const BlockListList: React.FC<BlockListListProps> = ({
       /><button onClick={handleAdd(inputValue)}
       className="btn btn-primary bg-darkbrown text-white border-darkbrown hover:border-darkbrown hover:bg-pink text-center">Add
     </button> {errorMessage && <p className='text-primary pt-5'>{errorMessage}</p>}</span>
-    <ul id='lists' className="flex flex-wrap space-x-5 p-5 min-w-96 max-w-lg">
+    <ul id='lists' className="flex flex-row flex-wrap space-x-5 space-y-3 p-5 min-w-96 max-w-lg">
       {lists.map((blocklist: BlockListMetadata) => (
-        <li key={blocklist.id} className="flex">
+        <li key={blocklist.id} className="flex justify-start items-center space-x-2">
           <button onClick={() => {setSelectedList(blocklist)}}
           className="btn btn-primary bg-darkbrown border-darkbrown hover:bg-pink hover:border-darkbrown text-white text-center">
             {blocklist.name} 
           </button>
           <div onClick={handleDelete(blocklist.id)}
-          className="btn text-center hover:cursor-pointer">
-            <span className="text-darkbrown hover:text-white font-bold">&#10005;</span>
+          className="btn btn-primary bg-biege border-biege text-center hover:cursor-pointer hover:bg-darkbrown hover:text-white">
+            <span className="text-darkbrown font-bold hover:text-white">&#10005;</span>
           </div>
         </li>
       ))}

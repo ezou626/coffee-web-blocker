@@ -12,8 +12,8 @@ module.exports = {
     extend: {
       colors: {
         pink: '#ef9995',
-        tan: '#dbc1ac',
-        toast: '#967259',
+        mocha: '#ccb5a6',
+        biege: '#ebe2ca',
         darkbrown: '#976c58',
         espresso: '#38220f'
       },
