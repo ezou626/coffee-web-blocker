@@ -56,6 +56,18 @@ See our [Demo Video]() here.
    - Open Chrome and navigate to `chrome://extensions`
    - Enable "Developer mode"
    - Click "Load unpacked" and select the `dist` directory from the project
+   
+## Development
+
+- Run the development server with hot reloading:
+
+  ```bash
+  yarn run dev
+  ```
+
+- Load the unpacked extension in Chrome from the `dev_dist` directory
+- Make changes to the source code and the extension will automatically reload
+
 
 ## Demo Instruction and Screenshots
 
@@ -80,18 +92,6 @@ See our [Demo Video]() here.
 - Once a blocking session start, all URL and domains in the selected lists for that session will be blocked
 ![Screen shot of blocking](https://github.com/ezou626/coffee-web-blocker/blob/main/Screenshot-blocking.png)
 - You can temporarily bypass blocking by clicking "Unblock for Now"
-
-
-## Development
-
-- Run the development server with hot reloading:
-
-  ```bash
-  yarn run dev
-  ```
-
-- Load the unpacked extension in Chrome from the `dev_dist` directory
-- Make changes to the source code and the extension will automatically reload
 
 ## Chrome Extension Architecture
 
