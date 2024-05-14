@@ -114,7 +114,7 @@ const BlockListEditor: React.FC<BlockListEditorProps> = ({
   })
 
   return (
-  <div className="flex-col flex items-center space-y-2  min-w-full">
+  <div className="flex-col flex items-center space-y-2 min-w-full">
     <h1 className="text-2xl font-bold pt-5">Edit {currentList.name}</h1>
     <span className="pt-5 space-x-5 min-w-full px-20">
       <input
@@ -143,6 +143,7 @@ const BlockListEditor: React.FC<BlockListEditorProps> = ({
             className="btn text-center hover:cursor-pointer">
               <span className="text-gray-500 hover:text-white font-bold">&#10005;</span>
             </div>
+           
           </span>
         </li>
       ))}

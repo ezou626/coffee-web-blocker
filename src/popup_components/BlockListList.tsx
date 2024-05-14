@@ -113,14 +113,16 @@ const BlockListList: React.FC<BlockListListProps> = ({
     setIsBlocking(true);
   }
 
-  return (<div className="flex-col flex items-center">
+  return (<div className="flex-col flex items-center justify-between">
     { isBlocking ?
       <>
       <h1 className="text-lg font-bold">Currently Blocking</h1>
       <button id='end' className="btn" onClick={handleUnblock}>End Blocking Sesssion</button>
       </> : 
       <>
-        <h1 className="text-lg font-bold">Start a New Session</h1>
+        <h1 className="text-lg font-bold text-darkbrown">Start a New Session</h1>
+       
+        <div className="flex flex-row w-full items-center justify-start">
         <MultipleSelect<BlockListMetadata, true>
           isMulti
           unstyled
@@ -135,13 +137,17 @@ const BlockListList: React.FC<BlockListListProps> = ({
           options={lists}
           noOptionsMessage={() => null}
           classNames={{
-            container: () => "w-3/4",
-            control: () => "text-md hover:cursor-pointer p-1 rounded border w-full",
-            menu: () => "text-base-content bg-base-100 text-md p-1 border border-base-content rounded mt-1",
-            option: () => "px-3 py-2 hover:cursor-pointer hover:bg-accent rounded"
+            container: () => "w-2/3 border-darkbrown",
+            control: () => "text-md hover:cursor-pointer p-1 rounded border-darkbrown w-full",
+            menu: () => "text-base-content bg-base-100 text-md p-1 border border-darkbrown rounded mt-1",
+            option: () => "px-3 py-2 hover:cursor-pointer hover:bg-darkbrown hover:text-white rounded"
           }}
         ></MultipleSelect>
-        <button id='begin' className="btn" onClick={handleBlock}>Block These Lists</button>
+         <button id='begin' className="btn btn-primary bg-darkbrown border-darkbrown text-white" onClick={handleBlock}>Block</button>
+    
+        </div>
+     
+       
       </>
     }
   </div>);

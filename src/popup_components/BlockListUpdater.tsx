@@ -70,17 +70,17 @@ const BlockListUpdater: React.FC<BlockListUpdaterProps> = ({
 
   return (
   <div className="flex-col flex items-center space-y-2">
-    <h2 className="text-lg text-center max-w-xs font-bold">Add Tab to List</h2>
+    <h2 className="text-lg text-center max-w-xs font-bold text-darkbrown">Add Current Tab to List</h2>
     <h2 className="text-md text-center max-w-xs max-h-12 overflow-y-scroll overflow-x-hidden">{currentTabUrl && <>{currentTabUrl}</>}</h2>
-    <select className="select w-full max-w-xs" onChange={handleSelectChange} defaultValue={0}>
+    <select className="select select-bordered border-darkbrown w-full max-w-xs" onChange={handleSelectChange} defaultValue={0}>
       <option disabled value={0}>Select a List to Add To</option>
       {lists.map((list) => (<option 
         value={list.id} key={list.id}
       >{list.name}</option>))}
     </select>
     <span className="flex w-full space-x-3 justify-center items-center">
-      <button onClick={handleUrlAdd} className="btn w-5/12 max-w-xs">Add Just URL</button>
-      <button className="btn w-5/12 max-w-xs" onClick={handleDomainAdd}>Add Entire Site</button>
+      <button onClick={handleUrlAdd} className="btn btn-primary w-5/12 max-w-xs text-white bg-darkbrown border-darkbrown">Add Just URL</button>
+      <button className="btn btn-primary bg-darkbrown border-darkbrown w-5/12 max-w-xs text-white" onClick={handleDomainAdd}>Add Entire Site</button>
     </span>
   </div>
   );
