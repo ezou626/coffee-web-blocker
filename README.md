@@ -62,19 +62,22 @@
 
 ### Popup Demo
 - Click on the extension icon to open the popup window
-- Insert Screenshot Here
-- Under "Start A New Session" in the popup, you can start a new session by selecting one or more list from the Search Lists dropdown and clicking on block.
+![Screenshot of Popup](https://github.com/ezou626/coffee-web-blocker/blob/main/Screenshot-popup.png)
+- Under "Start A New Session" in the popup, you can start a new session by selecting one or more lists from the "Search Lists" dropdown and clicking on block.
 - Once a blocking session start, you can easily end the session by clicking on "End Blocking Session" button.
 - Under "Add Current Tab To List", the URL of the active tab is displayed. You can add this URL or the domain of this URL to a list chosen from the dropdown.
 
 ### Setting Page Demo
 - Click on "Advanced Settings" to open the setting page.
+![Screenshot of Settings](https://github.com/ezou626/coffee-web-blocker/blob/main/Screenshot-page1.png)
 - On the setting page, you can easily create a new block lists, or delete existing block lists by clicking the 'x' next to each of them.
 - Clicking on each individual list would bring you to their respective editing page.
+![Screen shot of Editing page](https://github.com/ezou626/coffee-web-blocker/blob/main/Screenshot-page2.png)
 - In the editing page, you can add URL and domain to that list, as well as view all existing URL/domains in that list and deleting them as needed.
 
 ### Blocking Demo
 - Once a blocking session start, all URL and domains in the selected lists for that session will be blocked
+![Screen shot of blocking](https://github.com/ezou626/coffee-web-blocker/blob/main/Screenshot-blocking.png)
 - You can temporarily bypass blocking by clicking "Unblock for Now"
 
 
