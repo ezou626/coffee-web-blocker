@@ -61,9 +61,15 @@ const BlockListList: React.FC<BlockListListProps> = ({
   }, [selectedList]);
 
   if (selectedList != null) {
-    return <div className="flex-col flex items-center">
-      <button onClick={() => {setSelectedList(null)}}>Back</button>
-      <BlockListEditor currentList={selectedList} links={links}></BlockListEditor>
+    return <div className="flex-col min-w-full" >
+    <button onClick={() => {setSelectedList(null)}} className='btn m-5'>Back</button>
+    <div className="flex-col flex items-center min-w-full">
+      <BlockListEditor 
+        currentList={selectedList} 
+        links={links} 
+        setLinks={setLinks}>
+      </BlockListEditor>
+    </div>
     </div>;
   }
 
@@ -116,7 +122,7 @@ const BlockListList: React.FC<BlockListListProps> = ({
   return (
   <div className="flex-col flex items-center min-w-full">
     <h1 className="text-2xl font-bold pt-5">Manage BlockLists</h1>
-    <h1 className="text-lg pt-5">Click on a BlockList Name to Edit It</h1>
+    <h2 className="text-lg pt-5">Click on a BlockList Name to Edit It</h2>
     <span className="pt-5 space-x-5"><input
         type="text"
         value={inputValue}
