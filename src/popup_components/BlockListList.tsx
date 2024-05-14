@@ -121,13 +121,6 @@ const BlockListList: React.FC<BlockListListProps> = ({
       </> : 
       <>
         <h1 className="text-lg font-bold">Start a New Session</h1>
-        {/* <ul id='lists' className="">
-          {lists.map((blocklist: BlockListMetadata) => (
-            <li key={blocklist.id} className={ selectedLists.has(blocklist.id) ? "font-bold" : ""}>
-              <button onClick={handleListSelect(blocklist.id)}>{blocklist.name}</button>
-            </li>
-          ))}
-        </ul> */}
         <MultipleSelect<BlockListMetadata, true>
           isMulti
           unstyled
