@@ -9,6 +9,7 @@
 - Users can easily create, update, and delete their blocklists via the advanced settings page
 
 Visit our [landing page](https://coffeewebblocker.click/) here.
+See our [Demo Video]() here.
 
 ## Implementation Details
 
