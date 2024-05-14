@@ -2,8 +2,11 @@
 
 ## Features
 
-- Dynamic block list
-- Timed/Untimed blocking
+- Users can create customizable lists of websites to block
+- Users can activate groups of list to block in the same blocking session
+- Users can temporarily bypass the blocking of a website during a session if needed
+- Users add specific URL or the whole domain to a blocklist
+- Users can easily create, update, and delete their blocklists via the advanced settings page
 
 ## Implementation Details
 
@@ -51,7 +54,7 @@
    - Enable "Developer mode"
    - Click "Load unpacked" and select the `dist` directory from the project
 
-## Usage
+## Demo Instruction
 
 - Right-click on a web page and select "Capture Snippet" from the context menu to save the selected text as a snippet
 - Click on the extension icon to open the popup window
