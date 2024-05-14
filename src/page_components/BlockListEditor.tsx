@@ -2,7 +2,7 @@
  * This component is designed to modify a blocklist
  */
 
-import React, { useState, useEffect, ChangeEvent } from "react";
+import React, { useState } from "react";
 import { BlockListMetadata, LinkResult } from "../api/BlockListAPI";
 import { DB_NAME, DB_VERSION, LINK_STORE} from '../config';
 
