@@ -114,35 +114,36 @@ const BlockListEditor: React.FC<BlockListEditorProps> = ({
   })
 
   return (
-  <div className="flex-col flex items-center space-y-2  min-w-full">
-    <h1 className="text-2xl font-bold pt-5">Edit {currentList.name}</h1>
+  <div className="flex-col flex items-center space-y-2 min-w-full">
+    <h1 className="text-2xl font-bold pt-5 text-darkbrown">Edit {currentList.name}</h1>
     <span className="pt-5 space-x-5 min-w-full px-20">
       <input
         type="text"
         value={currentUrl}
         onChange={handleUrlChange}
         placeholder="Add a New Link"
-        className='input'
+        className='input input-bordered border-darkbrown'
       />
-      <button onClick={handleUrlAdd} className="btn text-center">
+      <button onClick={handleUrlAdd} className="btn btn-primary bg-darkbrown text-white border-darkbrown text-center hover:bg-pink ">
         Add URL
       </button> 
-      <button onClick={handleDomainAdd} className="btn text-center">
+      <button onClick={handleDomainAdd} className="btn btn-primary bg-darkbrown text-white border-darkbrown text-center hover:bg-pink ">
         Add Domain
       </button> 
       {errorMessage && <p className='text-primary pt-5'>{errorMessage}</p>}
     </span>
-    <ul id='links' className="flex flex-col space-y-1 px-20 min-w-full overflow-y-scroll">
+    <ul id='links' className="flex flex-col space-y-4 px-20 min-w-full overflow-y-scroll">
       {links.map((link: LinkResult) => (
         <li key={link.id} className="w-full">
-          <span className="w-full">
-            <p className="btn text-center overflow-scroll-x w-3/4">
+          <span className="w-full flex justify-start items-center space-x-2">
+            <p className="btn btn-primary bg-biege border-mocha text-center text-darkbrown hover:bg-darkbrown hover:text-white  overflow-scroll-x w-3/4">
               {link.url} 
             </p>
             <div onClick={handleLinkDelete(link.id)}
-            className="btn text-center hover:cursor-pointer">
-              <span className="text-gray-500 hover:text-white font-bold">&#10005;</span>
+            className="btn btn-primary bg-biege border-biege text-center hover:cursor-pointer hover:bg-darkbrown">
+              <span className="text-darkbrown hover:bg-darkbrown hover:bg-darkbrown text-darkbrown hover:text-white font-bold">&#10005;</span>
             </div>
+           
           </span>
         </li>
       ))}

@@ -121,27 +121,28 @@ const BlockListList: React.FC<BlockListListProps> = ({
 
   return (
   <div className="flex-col flex items-center min-w-full">
-    <h1 className="text-2xl font-bold pt-5">Manage BlockLists</h1>
-    <h2 className="text-lg pt-5">Click on a BlockList Name to Edit It</h2>
-    <span className="pt-5 space-x-5"><input
+    <h1 className="text-2xl font-bold pt-5 text-darkbrown">Manage BlockLists</h1>
+    <h2 className="text-lg pt-5 text-darkbrown">Click on a BlockList Name to Edit It</h2>
+    <span className="pt-5 space-x-5">
+      <input
         type="text"
         value={inputValue}
         onChange={handleInputChange}
         placeholder="Add a New Blocklist"
-        className='input'
+        className='input input-bordered border-darkbrown'
       /><button onClick={handleAdd(inputValue)}
-      className="btn text-center">Add
-      </button> {errorMessage && <p className='text-primary pt-5'>{errorMessage}</p>}</span>
-    <ul id='lists' className="flex space-x-5 p-5 min-w-96 max-w-lg">
+      className="btn btn-primary bg-darkbrown text-white border-darkbrown hover:border-darkbrown hover:bg-pink text-center">Add
+    </button> {errorMessage && <p className='text-primary pt-5'>{errorMessage}</p>}</span>
+    <ul id='lists' className="flex flex-row flex-wrap space-x-5 space-y-3 p-5 min-w-96 max-w-lg">
       {lists.map((blocklist: BlockListMetadata) => (
-        <li key={blocklist.id} className="flex">
+        <li key={blocklist.id} className="flex justify-start items-center space-x-2">
           <button onClick={() => {setSelectedList(blocklist)}}
-          className="btn text-center">
+          className="btn btn-primary bg-darkbrown border-darkbrown hover:bg-pink hover:border-darkbrown text-white text-center">
             {blocklist.name} 
           </button>
           <div onClick={handleDelete(blocklist.id)}
-          className="btn text-center hover:cursor-pointer">
-            <span className="text-gray-500 hover:text-white font-bold">&#10005;</span>
+          className="btn btn-primary bg-biege border-biege text-center hover:cursor-pointer hover:bg-darkbrown hover:text-white">
+            <span className="text-darkbrown font-bold hover:text-white">&#10005;</span>
           </div>
         </li>
       ))}
