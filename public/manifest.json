@@ -15,7 +15,6 @@
       "storage", 
       "tabs",
       "activeTab", 
-      "contextMenus",
       "unlimitedStorage"
     ],
     "background": {
