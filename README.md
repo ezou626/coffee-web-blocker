@@ -1,5 +1,7 @@
 # Coffee Web Blocker Chrome Extension (React, TypeScript, Webpack, Chrome API)
 
+![Logo](public/images/android-chrome-512x512.png)
+
 By: Shruti Agarwal, Tiana Costello, Minfei Shen, and Eric Zou
 
 ## Our Awesome Features
