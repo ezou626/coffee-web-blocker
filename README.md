@@ -1,5 +1,7 @@
 # Coffee Web Blocker Chrome Extension (React, TypeScript, Webpack, Chrome API)
 
+By: Shruti Agarwal, Tiana Costello, Minfei Shen, and Eric Zou
+
 ## Our Awesome Features
 
 - Users can create customizable lists of websites to block
@@ -102,6 +104,9 @@ This project follows the Manifest V3 architecture for Chrome extensions. Key com
 - `contentScript.js`: Injected into web pages to interact with the DOM and communicate with the background script
 - Popup window: Displays the extension's user interface when the extension icon is clicked
 - Advanced Settings Page: Displays editing and updating features of blocklists
+
+## Chrome Web Store Status
+![alt text](image.png)
 
 ## Credits
 
