@@ -61,6 +61,10 @@ See a [demo](https://youtu.be/NvZ-1hMQ5A0) here.
 - Load the unpacked extension in Chrome from the `dev_dist` directory
 - Make changes to the source code and the extension will automatically reload
 
+## Issues
+
+Please let us know about any issues you encounter [here](https://github.com/ezou626/coffee-web-blocker/issues).
+
 ## Demo Instruction and Screenshots
 
 - Navigate to a new tab
