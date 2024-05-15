@@ -4,6 +4,8 @@
 
 By: Shruti Agarwal, Tiana Costello, Minfei Shen, and Eric Zou
 
+Coffee Web Blocker is a Chrome Extension that enables users to group and block sets of websites (i.e. block lists), in order to boost their productivity while working. Our platform offers an intuitive way for users to activate blocking sessions and manage blocklists/associated URLs.
+
 ## Our Awesome Features
 
 - Users can create customizable lists of websites to block
