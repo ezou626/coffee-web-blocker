@@ -11,16 +11,7 @@ By: Shruti Agarwal, Tiana Costello, Minfei Shen, and Eric Zou
 - Users can easily create, update, and delete their blocklists via the advanced settings page
 
 Visit our [landing page](https://coffeewebblocker.click/) here.
-See our [Demo Video](https://youtu.be/NvZ-1hMQ5A0) here.
-
-## Implementation Details
-
-### Storage
-- IndexedDB
-- Local Storage
-
-### Monitoring
-- Service Worker
+See a [demo](https://youtu.be/NvZ-1hMQ5A0) here.
 
 ## Installation
 
@@ -70,7 +61,6 @@ See our [Demo Video](https://youtu.be/NvZ-1hMQ5A0) here.
 - Load the unpacked extension in Chrome from the `dev_dist` directory
 - Make changes to the source code and the extension will automatically reload
 
-
 ## Demo Instruction and Screenshots
 
 - Navigate to a new tab
@@ -101,9 +91,15 @@ This project follows the Manifest V3 architecture for Chrome extensions. Key com
 
 - `manifest.json`: Defines the extension's metadata, permissions, and script configurations
 - `background.js`: Runs in the background and handles events and long-running tasks
-- `contentScript.js`: Injected into web pages to interact with the DOM and communicate with the background script
 - Popup window: Displays the extension's user interface when the extension icon is clicked
 - Advanced Settings Page: Displays editing and updating features of blocklists
+
+### Storage
+- IndexedDB
+- Local Storage
+
+### Monitoring
+- Service Worker
 
 ## Chrome Web Store Status
 ![alt text](image.png)
