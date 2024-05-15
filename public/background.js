@@ -5,6 +5,8 @@ const LINK_STORE = 'links';
 const MOVEMENT_TIME = 100;
 const DEV_MODE = true;
 
+var global_pattern = '';
+
 //initialize db, active lists, and settings
 chrome.runtime.onInstalled.addListener(async () => {
   chrome.storage.local.clear()
@@ -103,6 +105,19 @@ chrome.runtime.onMessage.addListener(async (message, sender, sendResponse) => {
   };
 });
 
+function sendNoInfo (message, sender, sendResponse) {
+  if (message.action === 'getTabInfo') {
+    sendResponse({ matched: '' });
+  }
+}
+
+function sendInfo (message, sender, sendResponse) {
+  if (message.action === 'getTabInfo') {
+      sendResponse({ matched: global_pattern });
+      chrome.extension.onMessage.removeListener(sendInfo);
+  }
+}
+
 /**
  * Blocks tab when user is "no longer moving tab"
  * @param {*} tabId 
@@ -111,11 +126,8 @@ chrome.runtime.onMessage.addListener(async (message, sender, sendResponse) => {
  */
 const blockTab = (targetTabId, url, pattern, depth) => {
   try {
-    chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
-      if (message.action === 'getTabInfo') {
-          sendResponse({ matched: pattern });
-      }}
-    )
+    global_pattern = pattern;
+    chrome.runtime.onMessage.addListener(sendInfo);
     setTimeout(() => chrome.tabs.update(targetTabId, {
       url: chrome.runtime.getURL('block.html')
     }), MOVEMENT_TIME);

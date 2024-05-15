@@ -9,7 +9,7 @@ function handleUnblock() {
 }
 
 document.getElementById('unblock').addEventListener("click", handleUnblock);
-if (!pattern) {
+if (!pattern || pattern === '') {
   document.getElementById('unblock').style.visibility = "hidden";
 }
 
