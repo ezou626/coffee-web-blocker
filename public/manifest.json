@@ -1,6 +1,6 @@
 {
     "manifest_version": 3,
-    "name": "LockIn Web Blocker",
+    "name": "Coffee Web Blocker",
     "version": "1.0",
     "description": "Improve productivity by eliminating distractions online",
     "icons": {
@@ -14,7 +14,6 @@
     "permissions": [
       "storage", 
       "tabs",
-      "activeTab", 
       "unlimitedStorage"
     ],
     "background": {
