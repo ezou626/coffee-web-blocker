@@ -11,7 +11,7 @@ By: Shruti Agarwal, Tiana Costello, Minfei Shen, and Eric Zou
 - Users can easily create, update, and delete their blocklists via the advanced settings page
 
 Visit our [landing page](https://coffeewebblocker.click/) here.
-See our [Demo Video]() here.
+See our [Demo Video](https://youtu.be/NvZ-1hMQ5A0) here.
 
 ## Implementation Details
 
