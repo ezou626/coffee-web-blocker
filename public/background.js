@@ -111,18 +111,14 @@ chrome.runtime.onMessage.addListener(async (message, sender, sendResponse) => {
   };
 });
 
-function sendNoInfo (message, sender, sendResponse) {
+// Generic message handler for getTabInfo
+chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   if (message.action === 'getTabInfo') {
-    sendResponse({ matched: '' });
+    console.log("Received getTabInfo request, sending pattern:", global_pattern);
+    sendResponse({ matched: global_pattern });
+    return true; // Indicate we will send a response asynchronously
   }
-}
-
-function sendInfo (message, sender, sendResponse) {
-  if (message.action === 'getTabInfo') {
-      sendResponse({ matched: global_pattern });
-      chrome.extension.onMessage.removeListener(sendInfo);
-  }
-}
+});
 
 /**
  * Blocks tab when user is "no longer moving tab"
@@ -132,11 +128,25 @@ function sendInfo (message, sender, sendResponse) {
  */
 const blockTab = (targetTabId, url, pattern, depth) => {
   try {
+    // Set the global pattern so block.js can access it when asked
     global_pattern = pattern;
-    chrome.runtime.onMessage.addListener(sendInfo);
-    setTimeout(() => chrome.tabs.update(targetTabId, {
-      url: chrome.runtime.getURL('block.html')
-    }), MOVEMENT_TIME);
+    console.log("Set global pattern to:", pattern); // Add debug log
+    
+    // First search for the current URL in history
+    chrome.history.search(
+      { text: url, maxResults: 1 },
+      (historyItems) => {
+        // If found in history, delete it
+        if (historyItems.length > 0) {
+          chrome.history.deleteUrl({ url: historyItems[0].url });
+        }
+        
+        // Then navigate to block page
+        setTimeout(() => chrome.tabs.update(targetTabId, {
+          url: chrome.runtime.getURL('block.html')
+        }), MOVEMENT_TIME);
+      }
+    );
   } catch (e) {
     if (depth == 10) {
       console.log(e);

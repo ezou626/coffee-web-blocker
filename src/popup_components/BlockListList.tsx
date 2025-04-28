@@ -122,7 +122,7 @@ const BlockListList: React.FC<BlockListListProps> = ({
       <>
         <h1 className="text-lg font-bold text-darkbrown">Start a New Session</h1>
        
-        <div className="flex flex-row w-full items-center justify-start">
+        <div className="flex flex-row w-full items-center justify-center">
         <MultipleSelect<BlockListMetadata, true>
           isMulti
           unstyled
@@ -146,7 +146,6 @@ const BlockListList: React.FC<BlockListListProps> = ({
          <button id='begin' className="btn btn-primary bg-darkbrown border-darkbrown text-white" onClick={handleBlock}>Block</button>
     
         </div>
-     
        
       </>
     }

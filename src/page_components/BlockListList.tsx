@@ -5,6 +5,7 @@ import React, {useEffect, useState} from 'react';
 import { BlockListMetadata, LinkResult } from '../api/BlockListAPI';
 import { DB_NAME, DB_VERSION, BLOCKLIST_STORE, LINK_STORE } from '../config';
 import BlockListEditor from './BlockListEditor';
+import { Plus, X, ArrowLeft, Settings } from 'lucide-react';
 
 export interface BlockListListProps {
   lists: BlockListMetadata[];
@@ -61,16 +62,23 @@ const BlockListList: React.FC<BlockListListProps> = ({
   }, [selectedList]);
 
   if (selectedList != null) {
-    return <div className="flex-col min-w-full" >
-    <button onClick={() => {setSelectedList(null)}} className='btn m-5'>Back</button>
-    <div className="flex-col flex items-center min-w-full">
-      <BlockListEditor 
-        currentList={selectedList} 
-        links={links} 
-        setLinks={setLinks}>
-      </BlockListEditor>
-    </div>
-    </div>;
+    return (
+      <div className="container mx-auto px-4 py-8">
+        <button 
+          onClick={() => {setSelectedList(null)}} 
+          className="btn btn-sm btn-outline gap-2 mb-6"
+        >
+          <ArrowLeft size={16} /> Back
+        </button>
+        <div className="flex-col flex items-center w-full">
+          <BlockListEditor 
+            currentList={selectedList} 
+            links={links} 
+            setLinks={setLinks}
+          />
+        </div>
+      </div>
+    );
   }
 
   const handleDelete = (id: number) => (() => {
@@ -115,39 +123,67 @@ const BlockListList: React.FC<BlockListListProps> = ({
       addRequest.onsuccess = (event: Event) => {
         const target = event.target  as IDBRequest;
         setLists([...lists, {id: target.result, name: name}]);
+        setInputValue(''); // Clear input after adding
       }
     }
   })
 
   return (
-  <div className="flex-col flex items-center min-w-full">
-    <h1 className="text-2xl font-bold pt-5 text-darkbrown">Manage BlockLists</h1>
-    <h2 className="text-lg pt-5 text-darkbrown">Click on a BlockList Name to Edit It</h2>
-    <span className="pt-5 space-x-5">
-      <input
-        type="text"
-        value={inputValue}
-        onChange={handleInputChange}
-        placeholder="Add a New Blocklist"
-        className='input input-bordered border-darkbrown'
-      /><button onClick={handleAdd(inputValue)}
-      className="btn btn-primary bg-darkbrown text-white border-darkbrown hover:border-darkbrown hover:bg-pink text-center">Add
-    </button> {errorMessage && <p className='text-primary pt-5'>{errorMessage}</p>}</span>
-    <ul id='lists' className="flex flex-row flex-wrap space-x-5 space-y-3 p-5 min-w-96 max-w-lg">
-      {lists.map((blocklist: BlockListMetadata) => (
-        <li key={blocklist.id} className="flex justify-start items-center space-x-2">
-          <button onClick={() => {setSelectedList(blocklist)}}
-          className="btn btn-primary bg-darkbrown border-darkbrown hover:bg-pink hover:border-darkbrown text-white text-center">
-            {blocklist.name} 
+    <div className="container mx-auto px-4 py-8">
+      <div className="text-center mb-8">
+        <h1 className="text-3xl font-bold text-darkbrown">Manage BlockLists</h1>
+        <p className="text-lg mt-2 text-darkbrown">Click on a BlockList to edit it</p>
+      </div>
+      
+      <div className="form-control max-w-md mx-auto mb-8">
+        <div className="join w-full">
+          <input
+            type="text"
+            value={inputValue}
+            onChange={handleInputChange}
+            placeholder="Add a New Blocklist"
+            className="input input-bordered join-item w-full"
+          />
+          <button 
+            onClick={handleAdd(inputValue)}
+            className="btn join-item btn-primary gap-2"
+          >
+            <Plus size={18} /> Add
           </button>
-          <div onClick={handleDelete(blocklist.id)}
-          className="btn btn-primary bg-biege border-biege text-center hover:cursor-pointer hover:bg-darkbrown hover:text-white">
-            <span className="text-darkbrown font-bold hover:text-white">&#10005;</span>
+        </div>
+        {errorMessage && (
+          <div className="alert alert-error mt-2">
+            <span>{errorMessage}</span>
           </div>
-        </li>
-      ))}
-    </ul>
-  </div>
+        )}
+      </div>
+      
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-4xl mx-auto">
+        {lists.map((blocklist: BlockListMetadata) => (
+          <div key={blocklist.id} className="card bg-base-100 shadow-md">
+            <div className="card-body p-4">
+              <div className="flex justify-between items-center">
+                <h2 className="card-title text-darkbrown">{blocklist.name}</h2>
+                <button 
+                  onClick={handleDelete(blocklist.id)}
+                  className="btn btn-circle btn-sm btn-ghost text-error"
+                >
+                  <X size={16} />
+                </button>
+              </div>
+              <div className="card-actions justify-end mt-2">
+                <button 
+                  onClick={() => {setSelectedList(blocklist)}}
+                  className="btn btn-primary btn-sm gap-2"
+                >
+                  <Settings size={16} /> Edit
+                </button>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
   );
 };
 

@@ -30,9 +30,15 @@ module.exports = {
           "accent": "#dc8850",
           "neutral": "#3d4451",
           "base-100": "#ece3ca",
+          "base-200": "#d1c4a7",
+          "base-300": "#b6a58a",
+          "base-400": "#9b866d",
+          "base-500": "#806752",
+          "base-600": "#654e37",
+          "base-700": "#4a351c",
         },
       },
-        "coffee", "cupcake", "retro"], // false: only light + dark | true: all themes | array: specific themes like this ["light", "dark", "cupcake"]
+        "cupcake"], // false: only light + dark | true: all themes | array: specific themes like this ["light", "dark", "cupcake"]
     darkTheme: "myTheme", // name of one of the included themes for dark mode
     base: true, // applies background color and foreground color for root element by default
     styled: true, // include daisyUI colors and design decisions for all components

@@ -1,8 +1,9 @@
-@import url(https://fonts.googleapis.com/css?family=Roboto:400);
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
 body {
   background: #967259;
   color: #ece0d1;
-  font-family: "Roboto", sans-serif;
+  font-family: 'Poppins', sans-serif;
   max-height: 700px;
   overflow: hidden;
 }
@@ -38,11 +39,19 @@ body {
   margin: 2rem auto;
   color: #ece0d1;
   background-color: #967259;
-  border-color: #967259;
+  border: 2px solid #ece0d1;
+  border-radius: 8px;
   cursor: pointer;
   opacity: 0.9;
   filter: alpha(opacity=90);
+  transition: all 0.3s ease;
 }
+
+._2:hover {
+  background-color: #7d5d46;
+  transform: scale(1.05);
+}
+
 .text {
   font-size: 70px;
   text-align: center;
@@ -83,24 +92,22 @@ hr:after {
   background: #33cc99;
 }
 
+/* Cloud Animations */
 .cloud {
   width: 350px;
   height: 120px;
-
-  background: #fff;
-  background: linear-gradient(top, #fff 100%);
-  background: -webkit-linear-gradient(top, #fff 100%);
-  background: -moz-linear-gradient(top, #fff 100%);
-  background: -ms-linear-gradient(top, #fff 100%);
-  background: -o-linear-gradient(top, #fff 100%);
-
+  background: #FFF;
+  background: linear-gradient(top, #FFF 100%);
+  background: -webkit-linear-gradient(top, #FFF 100%);
+  background: -moz-linear-gradient(top, #FFF 100%);
+  background: -ms-linear-gradient(top, #FFF 100%);
+  background: -o-linear-gradient(top, #FFF 100%);
   border-radius: 100px;
   -webkit-border-radius: 100px;
   -moz-border-radius: 100px;
-
   position: absolute;
   margin: 120px auto 20px;
-  z-index: -1;
+  opacity: 0.8;
   transition: ease 1s;
 }
 
@@ -108,7 +115,7 @@ hr:after {
 .cloud:before {
   content: "";
   position: absolute;
-  background: #fff;
+  background: #FFF;
   z-index: -1;
 }
 
@@ -117,7 +124,6 @@ hr:after {
   height: 100px;
   top: -50px;
   left: 50px;
-
   border-radius: 100px;
   -webkit-border-radius: 100px;
   -moz-border-radius: 100px;
@@ -128,7 +134,6 @@ hr:after {
   height: 180px;
   top: -90px;
   right: 50px;
-
   border-radius: 200px;
   -webkit-border-radius: 200px;
   -moz-border-radius: 200px;
@@ -140,7 +145,7 @@ hr:after {
   -webkit-transform: scale(0.3);
   -moz-transform: scale(0.3);
   transform: scale(0.3);
-  opacity: 0.9;
+  opacity: 0.7;
   -webkit-animation: moveclouds 15s linear infinite;
   -moz-animation: moveclouds 15s linear infinite;
   -o-animation: moveclouds 15s linear infinite;
@@ -172,12 +177,10 @@ hr:after {
 .x3 {
   left: 250px;
   bottom: -70px;
-
   -webkit-transform: scale(0.6);
   -moz-transform: scale(0.6);
   transform: scale(0.6);
   opacity: 0.8;
-
   -webkit-animation: moveclouds 25s linear infinite;
   -moz-animation: moveclouds 25s linear infinite;
   -o-animation: moveclouds 25s linear infinite;
@@ -185,13 +188,11 @@ hr:after {
 
 .x4 {
   left: 470px;
-  botttom: 20px;
-
+  bottom: 20px;
   -webkit-transform: scale(0.75);
   -moz-transform: scale(0.75);
   transform: scale(0.75);
   opacity: 0.75;
-
   -webkit-animation: moveclouds 18s linear infinite;
   -moz-animation: moveclouds 18s linear infinite;
   -o-animation: moveclouds 18s linear infinite;
@@ -200,12 +201,10 @@ hr:after {
 .x5 {
   left: 200px;
   top: 300px;
-
   -webkit-transform: scale(0.5);
   -moz-transform: scale(0.5);
   transform: scale(0.5);
   opacity: 0.8;
-
   -webkit-animation: moveclouds 20s linear infinite;
   -moz-animation: moveclouds 20s linear infinite;
   -o-animation: moveclouds 20s linear infinite;
@@ -219,6 +218,7 @@ hr:after {
     margin-left: -1000px;
   }
 }
+
 @-moz-keyframes moveclouds {
   0% {
     margin-left: 1000px;
@@ -227,6 +227,7 @@ hr:after {
     margin-left: -1000px;
   }
 }
+
 @-o-keyframes moveclouds {
   0% {
     margin-left: 1000px;
@@ -234,4 +235,26 @@ hr:after {
   100% {
     margin-left: -1000px;
   }
+}
+
+/* Glass card effect */
+.glass {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Custom styles for button */
+.btn-primary {
+  background-color: #967259 !important;
+  border-color: #ece0d1 !important;
+  color: #ece0d1 !important;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #634832 !important;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }

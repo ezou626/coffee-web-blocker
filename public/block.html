@@ -1,9 +1,25 @@
-<html>
+<!DOCTYPE html>
+<html lang="en" data-theme="coffee">
   <head>
-    <link rel="stylesheet" href="block.css"></link>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coffee Web Blocker</title>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.10.1/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.4.3/dist/tailwind.min.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="block.css">
   </head>
-  <body>
-    <div id="clouds">
+  <body class="min-h-screen bg-gradient-to-br from-amber-900 to-amber-700 flex items-center justify-center">
+    <div class="card w-96 glass shadow-xl bg-base-100/30 backdrop-blur-md">
+      <div class="card-body items-center text-center">
+        <div class="card-title text-7xl font-bold text-amber-100 mb-4">404</div>
+        <hr class="w-3/4 border-amber-100 mb-6">
+        <h2 class="text-2xl font-bold text-amber-100 mb-6">For The Best You!</h2>
+        <div class="card-actions">
+          <button id="unblock" class="btn btn-primary">Loading...</button>
+        </div>
+      </div>
+    </div>
+    <div id="clouds" class="fixed inset-0 z-[-1] pointer-events-none">
       <div class="cloud x1"></div>
       <div class="cloud x1_5"></div>
       <div class="cloud x2"></div>
@@ -11,13 +27,6 @@
       <div class="cloud x4"></div>
       <div class="cloud x5"></div>
     </div>
-    <div class='c'>
-      <div class='_404'>404</div>
-      <hr>
-      <div class='_1'>For The Best You!</div>
-      <br>
-      <button id="unblock" class="_2">Loading</button>
-      <script src="block.js"></script>
-    </div>
+    <script src="block.js"></script>
   </body>
 </html>

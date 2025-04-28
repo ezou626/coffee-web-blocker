@@ -5,6 +5,7 @@
 import React, { useState } from "react";
 import { BlockListMetadata, LinkResult } from "../api/BlockListAPI";
 import { DB_NAME, DB_VERSION, LINK_STORE} from '../config';
+import { Plus, X, Globe, Link as LinkIcon } from 'lucide-react';
 
 const expression = /[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/gi;
 
@@ -114,41 +115,75 @@ const BlockListEditor: React.FC<BlockListEditorProps> = ({
   })
 
   return (
-  <div className="flex-col flex items-center space-y-2 min-w-full">
-    <h1 className="text-2xl font-bold pt-5 text-darkbrown">Edit {currentList.name}</h1>
-    <span className="pt-5 space-x-5 min-w-full px-20">
-      <input
-        type="text"
-        value={currentUrl}
-        onChange={handleUrlChange}
-        placeholder="Add a New Link"
-        className='input input-bordered border-darkbrown'
-      />
-      <button onClick={handleUrlAdd} className="btn btn-primary bg-darkbrown text-white border-darkbrown text-center hover:bg-pink ">
-        Add URL
-      </button> 
-      <button onClick={handleDomainAdd} className="btn btn-primary bg-darkbrown text-white border-darkbrown text-center hover:bg-pink ">
-        Add Domain
-      </button> 
-      {errorMessage && <p className='text-primary pt-5'>{errorMessage}</p>}
-    </span>
-    <ul id='links' className="flex flex-col space-y-4 px-20 min-w-full overflow-y-scroll">
-      {links.map((link: LinkResult) => (
-        <li key={link.id} className="w-full">
-          <span className="w-full flex justify-start items-center space-x-2">
-            <p className="btn btn-primary bg-biege border-mocha text-center text-darkbrown hover:bg-darkbrown hover:text-white  overflow-scroll-x w-3/4">
-              {link.url} 
-            </p>
-            <div onClick={handleLinkDelete(link.id)}
-            className="btn btn-primary bg-biege border-biege text-center hover:cursor-pointer hover:bg-darkbrown">
-              <span className="text-darkbrown hover:bg-darkbrown hover:bg-darkbrown text-darkbrown hover:text-white font-bold">&#10005;</span>
+    <div className="w-full max-w-2xl mx-auto">
+      <h1 className="text-2xl font-bold text-center mb-6 text-darkbrown">
+        Edit {currentList.name}
+      </h1>
+      
+      <div className="card bg-base-100 shadow-md mb-6">
+        <div className="card-body">
+          <div className="form-control">
+            <div className="input-group">
+              <input
+                type="text"
+                value={currentUrl}
+                onChange={handleUrlChange}
+                placeholder="Enter URL to block"
+                className="input input-bordered w-full"
+              />
+              <div className="join">
+                <button 
+                  onClick={handleUrlAdd} 
+                  className="btn btn-primary join-item gap-2"
+                >
+                  <LinkIcon size={16} /> Add URL
+                </button>
+                <button 
+                  onClick={handleDomainAdd} 
+                  className="btn btn-secondary join-item gap-2"
+                >
+                  <Globe size={16} /> Add Domain
+                </button>
+              </div>
             </div>
-           
-          </span>
-        </li>
-      ))}
-    </ul>
-  </div>
+            {errorMessage && (
+              <div className="alert alert-error mt-4">
+                <span>{errorMessage}</span>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+      
+      <div className="card bg-base-100 shadow-md">
+        <div className="card-body">
+          <h2 className="card-title text-darkbrown mb-4">Blocked Sites</h2>
+          
+          {links.length === 0 ? (
+            <div className="alert">
+              <span>No sites are currently blocked in this list. Add some URLs above.</span>
+            </div>
+          ) : (
+            <div className="space-y-2 max-h-96 overflow-y-auto pr-2">
+              {links.map((link: LinkResult) => (
+                <div key={link.id} className="flex items-center justify-between bg-base-200 p-3 rounded-lg">
+                  <div className="flex items-center gap-2 overflow-hidden">
+                    <Globe size={16} className="text-darkbrown shrink-0" />
+                    <span className="truncate">{link.url}</span>
+                  </div>
+                  <button 
+                    onClick={handleLinkDelete(link.id)}
+                    className="btn btn-circle btn-sm btn-ghost text-error"
+                  >
+                    <X size={16} />
+                  </button>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
   );
 }
 

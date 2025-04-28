@@ -1,12 +1,38 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="coffee">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Coffee Grindset Web Blocker</title>
+    <title>Coffee Web Blocker</title>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.10.1/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.4.3/dist/tailwind.min.css" rel="stylesheet" type="text/css" />
+    <style>
+      :root {
+        --primary: #976c58;
+        --primary-focus: #634832;
+        --primary-content: #ffffff;
+        --secondary: #ebe2ca;
+        --secondary-focus: #dbc1ac;
+        --secondary-content: #38220f;
+        --accent: #967259;
+        --accent-focus: #634832;
+        --accent-content: #ffffff;
+        --neutral: #3d4451;
+        --neutral-focus: #2a2e37;
+        --neutral-content: #ffffff;
+        --base-100: #ffffff;
+        --base-200: #f9fafb;
+        --base-300: #d1d5db;
+        --base-content: #1f2937;
+        --info: #3abff8;
+        --success: #36d399;
+        --warning: #fbbd23;
+        --error: #f87272;
+      }
+    </style>
   </head>
-  <body>
-    <div id="root" style="display: flex; width: 100%; height: 100%"></div>
+  <body class="bg-base-100">
+    <div id="root" class="min-h-screen"></div>
     <script src="page-bundle.js"></script>
   </body>
 </html>
