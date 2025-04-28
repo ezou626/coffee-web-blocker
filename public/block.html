@@ -1,25 +1,23 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="coffee">
+<html lang="en">
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Coffee Web Blocker</title>
-    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.10.1/dist/full.min.css" rel="stylesheet" type="text/css" />
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.4.3/dist/tailwind.min.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="block.css">
   </head>
-  <body class="min-h-screen bg-gradient-to-br from-amber-900 to-amber-700 flex items-center justify-center">
-    <div class="card w-96 glass shadow-xl bg-base-100/30 backdrop-blur-md">
-      <div class="card-body items-center text-center">
-        <div class="card-title text-7xl font-bold text-amber-100 mb-4">404</div>
-        <hr class="w-3/4 border-amber-100 mb-6">
-        <h2 class="text-2xl font-bold text-amber-100 mb-6">For The Best You!</h2>
-        <div class="card-actions">
-          <button id="unblock" class="btn btn-primary">Loading...</button>
+  <body style="min-height: 100vh; background: linear-gradient(to bottom right, #967259, #634832); display: flex; align-items: center; justify-content: center;">
+    <div style="width: 80vw; max-width: 1200px; background: rgba(255, 255, 255, 0.15); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 1rem; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+      <div style="padding: 1.5rem; text-align: center;">
+        <div style="font-size: 5rem; font-weight: 600; color: #ece0d1; margin-bottom: 0.75rem;">This page is blocked for now.</div>
+        <hr style="width: 75%; border: none; border-top: 1px solid #ece0d1; margin: 1rem auto;">
+        <h2 style="font-size: 1.75rem; font-weight: 600; color: #ece0d1; margin-bottom: 1rem;">For The Best You!</h2>
+        <div>
+          <button id="unblock" style="background-color: #967259; border: 1px solid #ece0d1; color: #ece0d1; padding: 0.75rem 1.5rem; font-size: 1.125rem; font-weight: 600; border-radius: 0.5rem; cursor: pointer; transition: all 0.3s ease;">Loading...</button>
         </div>
       </div>
     </div>
-    <div id="clouds" class="fixed inset-0 z-[-1] pointer-events-none">
+    <div id="clouds" style="position: fixed; inset: 0; z-index: -1; pointer-events: none;">
       <div class="cloud x1"></div>
       <div class="cloud x1_5"></div>
       <div class="cloud x2"></div>

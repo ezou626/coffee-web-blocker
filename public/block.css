@@ -4,8 +4,12 @@ body {
   background: #967259;
   color: #ece0d1;
   font-family: 'Poppins', sans-serif;
-  max-height: 700px;
-  overflow: hidden;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .c {
   text-align: center;
@@ -146,9 +150,9 @@ hr:after {
   -moz-transform: scale(0.3);
   transform: scale(0.3);
   opacity: 0.7;
-  -webkit-animation: moveclouds 15s linear infinite;
-  -moz-animation: moveclouds 15s linear infinite;
-  -o-animation: moveclouds 15s linear infinite;
+  -webkit-animation: moveclouds 30s linear infinite;
+  -moz-animation: moveclouds 30s linear infinite;
+  -o-animation: moveclouds 30s linear infinite;
 }
 
 .x1_5 {
@@ -157,9 +161,9 @@ hr:after {
   -webkit-transform: scale(0.3);
   -moz-transform: scale(0.3);
   transform: scale(0.3);
-  -webkit-animation: moveclouds 17s linear infinite;
-  -moz-animation: moveclouds 17s linear infinite;
-  -o-animation: moveclouds 17s linear infinite;
+  -webkit-animation: moveclouds 27s linear infinite;
+  -moz-animation: moveclouds 27s linear infinite;
+  -o-animation: moveclouds 27s linear infinite;
 }
 
 .x2 {
@@ -193,9 +197,9 @@ hr:after {
   -moz-transform: scale(0.75);
   transform: scale(0.75);
   opacity: 0.75;
-  -webkit-animation: moveclouds 18s linear infinite;
-  -moz-animation: moveclouds 18s linear infinite;
-  -o-animation: moveclouds 18s linear infinite;
+  -webkit-animation: moveclouds 41s linear infinite;
+  -moz-animation: moveclouds 41s linear infinite;
+  -o-animation: moveclouds 41s linear infinite;
 }
 
 .x5 {
@@ -205,35 +209,35 @@ hr:after {
   -moz-transform: scale(0.5);
   transform: scale(0.5);
   opacity: 0.8;
-  -webkit-animation: moveclouds 20s linear infinite;
-  -moz-animation: moveclouds 20s linear infinite;
-  -o-animation: moveclouds 20s linear infinite;
+  -webkit-animation: moveclouds 28s linear infinite;
+  -moz-animation: moveclouds 28s linear infinite;
+  -o-animation: moveclouds 28s linear infinite;
 }
 
 @-webkit-keyframes moveclouds {
   0% {
-    margin-left: 1000px;
+    margin-left: -30%;
   }
   100% {
-    margin-left: -1000px;
+    margin-left: 100%;
   }
 }
 
 @-moz-keyframes moveclouds {
   0% {
-    margin-left: 1000px;
+    margin-left: -30%;
   }
   100% {
-    margin-left: -1000px;
+    margin-left: 100%;
   }
 }
 
 @-o-keyframes moveclouds {
   0% {
-    margin-left: 1000px;
+    margin-left: -30%;
   }
   100% {
-    margin-left: -1000px;
+    margin-left: 100%;
   }
 }
 
@@ -243,6 +247,7 @@ hr:after {
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 1rem;
 }
 
 /* Custom styles for button */
@@ -251,6 +256,9 @@ hr:after {
   border-color: #ece0d1 !important;
   color: #ece0d1 !important;
   transition: all 0.3s ease;
+  padding: 0.75rem 1.5rem;
+  font-size: 1.125rem;
+  font-weight: 600;
 }
 
 .btn-primary:hover {
