@@ -117,7 +117,7 @@ const BlockListList: React.FC<BlockListListProps> = ({
     { isBlocking ?
       <>
       <h1 className="text-lg font-bold">Currently Blocking</h1>
-      <button id='end' className="btn" onClick={handleUnblock}>End Blocking Sesssion</button>
+      <button id='end' className="btn" onClick={handleUnblock}>End Blocking Session</button>
       </> : 
       <>
         <h1 className="text-lg font-bold text-darkbrown">Start a New Session</h1>
