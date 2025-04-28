@@ -3,12 +3,18 @@ const DB_VERSION = 1; // only integers
 const BLOCKLIST_STORE = 'blockLists';
 const LINK_STORE = 'links';
 const MOVEMENT_TIME = 100;
-const DEV_MODE = true;
+const DEV_MODE = false;
 
 var global_pattern = '';
 
 //initialize db, active lists, and settings
-chrome.runtime.onInstalled.addListener(async () => {
+chrome.runtime.onInstalled.addListener(async (details) => {
+
+  // only run on extension install, not chrome update, updates, etc.
+  if (details.reason != chrome.runtime.OnInstalledReason.INSTALL) {
+    return;
+  }
+
   chrome.storage.local.clear()
   chrome.storage.local.set({isBlocking: 'false'});
   chrome.storage.local.set({blocked: []});
